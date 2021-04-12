@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/artist_home_nav"
+    app:startDestination="@+id/artist_homemenu">
+    <fragment
+        android:id="@+id/artist_homemenu"
+        android:label="Home"
+        tools:layout="@layout/lay_fragment_home"
+        android:name="com.example.hopeart.Fragments.ArtistHomeFragment"/>
+    <fragment
+        android:id="@+id/artist_addartworkmenu"
+        android:label="Add ArtWork"
+        tools:layout="@layout/lay_fragment_addartwork"
+        android:name="com.example.hopeart.Fragments.ArtistAddArtworkFragment"/>
+    <fragment
+        android:id="@+id/artist_ordermenu"
+        android:label="Order"
+        tools:layout="@layout/lay_fragment_order"
+        android:name="com.example.hopeart.Fragments.ArtistOrderFragment"/>
+    <fragment
+        android:id="@+id/artist_profilemenu"
+        android:label="Profile"
+        tools:layout="@layout/lay_fragment_profile"
+        android:name="com.example.hopeart.Fragments.ArtistProfileFragment"/>
+    <fragment
+        android:id="@+id/artist_paymentmenu"
+        android:label="Payment"
+        tools:layout="@layout/lay_fragment_payment"
+        android:name="com.example.hopeart.Fragments.ArtistPaymentFragment"/>
+</navigation>
