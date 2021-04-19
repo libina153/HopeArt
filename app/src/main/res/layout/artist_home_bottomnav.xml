@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6BF890B3"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <fragment
@@ -15,11 +16,11 @@
         android:layout_marginBottom="?actionBarSize"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navhome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navhome"
-        app:menu="@menu/artist_home_menu"
-        android:background="@color/black"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:background="@color/purple_200"
+        app:menu="@menu/artist_home_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

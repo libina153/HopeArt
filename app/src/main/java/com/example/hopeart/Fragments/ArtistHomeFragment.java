@@ -22,7 +22,7 @@ public class ArtistHomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         boolean attachToRoot;
-        return inflater.inflate(R.layout.lay_fragment_home,container,attachToRoot=false);
+        return inflater.inflate(R.layout.artist_fragment_home,container,attachToRoot=false);
     }
 
     @Override

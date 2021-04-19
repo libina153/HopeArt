@@ -12,14 +12,14 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.hopeart.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ActivityArtistHomeBottomNav extends AppCompatActivity {
+public class ArtistHomeBottomNav extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfigration;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lay_artisthome_bottomnav);
+        setContentView(R.layout.artist_home_bottomnav);
         BottomNavigationView bottom_nav_home = findViewById(R.id.bottom_navhome);
 
         mAppBarConfigration = new AppBarConfiguration.Builder(R.id.artist_homemenu, R.id.artist_addartworkmenu, R.id.artist_ordermenu,R.id.artist_profilemenu, R.id.artist_paymentmenu).build();
