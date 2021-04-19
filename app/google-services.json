@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "958667776881",
+    "project_id": "hopeart-c171d",
+    "storage_bucket": "hopeart-c171d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958667776881:android:2a050d86c852841e878cd0",
+        "android_client_info": {
+          "package_name": "com.example.hopeart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958667776881-pb3rrlghsglv7h5711vthv1fcupdfe6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDTRoSBe2-s8lmWHocl9ev_M1sssAaW6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958667776881-pb3rrlghsglv7h5711vthv1fcupdfe6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

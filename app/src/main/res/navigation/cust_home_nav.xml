@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cust_home_nav"
+    app:startDestination="@+id/cust_homemenu">
+    <fragment
+        android:id="@+id/cust_homemenu"
+        android:label="Home"
+        tools:layout="@layout/cust_fragment_home"
+        android:name="com.example.hopeart.Fragments.CustHomeFragment"/>
+    <fragment
+        android:id="@+id/cust_profilemenu"
+        android:label="Profile"
+        tools:layout="@layout/cust_fragment_order"
+        android:name="com.example.hopeart.Fragments.CustProfileFragment"/>
+    <fragment
+        android:id="@+id/cust_wishlistmenu"
+        android:label="WishList"
+        tools:layout="@layout/cust_fragment_wishlist"
+        android:name="com.example.hopeart.Fragments.CustWishListFragment"/>
+    <fragment
+        android:id="@+id/cust_bookyourordermenu"
+        android:label="Book your own order"
+        tools:layout="@layout/cust_fragment_bookyourorder"
+        android:name="com.example.hopeart.Fragments.CustBookYourOrderFragment"/>
+    <fragment
+        android:id="@+id/cust_ordermenu"
+        android:label="order"
+        tools:layout="@layout/cust_fragment_order"
+        android:name="com.example.hopeart.Fragments.CustOrderFragment"/>
+
+
+</navigation>
