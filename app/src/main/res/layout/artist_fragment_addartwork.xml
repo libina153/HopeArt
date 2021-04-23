@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/artwork_imag"
+        android:id="@+id/artwork_img"
         android:layout_width="275dp"
         android:layout_height="218dp"
         android:layout_gravity="center"
@@ -13,6 +13,7 @@
         android:src="@drawable/splash_activity_image" />
 
     <TextView
+        android:id="@+id/txtArtWorkType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -21,6 +22,7 @@
         android:text="ArtWork Type"/>
 
     <TextView
+        android:id="@+id/txtFrameSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -29,6 +31,7 @@
         android:text="Frame Size"/>
 
     <TextView
+        android:id="@+id/txtPaperType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -36,15 +39,17 @@
         android:textSize="20dp"
         android:text="Paper Type"/>
 
-    <TextView
+    <EditText
+        android:id="@+id/edtPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:textSize="20dp"
-        android:text="Price"/>
+        android:hint="Price"/>
 
     <Button
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
