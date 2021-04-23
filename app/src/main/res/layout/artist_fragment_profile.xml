@@ -21,6 +21,7 @@
         android:id="@+id/artist_fragname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#040303"
         android:paddingStart="30sp"
         android:text="Name"
         android:textSize="20sp"/>
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:drawablePadding="10dp"
         android:layout_marginTop="5dp"
+        android:textColor="#040303"
         android:drawableStart="@drawable/ic_mobile_icon"
         android:text="Mobile No."
         android:textSize="20sp"/>
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:drawablePadding="10dp"
         android:layout_marginTop="5dp"
+        android:textColor="#040303"
         android:drawableStart="@drawable/ic_email_icon"
         android:text="Email"
         android:textSize="20sp"/>
@@ -50,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:textColor="#040303"
         android:text="Aadhaar"
         android:paddingStart="30sp"
         android:textSize="20sp"/>
@@ -59,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:textColor="#040303"
         android:paddingStart="30sp"
         android:text="Address"
         android:textSize="20sp"/>
