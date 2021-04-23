@@ -19,9 +19,11 @@ public class ActivitySplash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent regI=new Intent(ActivitySplash.this, ActivityRegistration.class);
+                Intent regI=new Intent(ActivitySplash.this, ActivityLogIn.class);
                 startActivity(regI);
+                finish();
             }
         },3000);
+
     }
 }

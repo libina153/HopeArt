@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,47 +23,19 @@ public class ActivityRegistration extends AppCompatActivity{
 
     EditText edtRegEmail,edtRegConfirmPass;
     FloatingActionButton btnReg;
-    RadioButton rbtnArtist,rbtnCustomer;
+    RadioGroup radiobtn_artist;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        rbtnArtist = findViewById(R.id.radiobtn_artist);
-
-        rbtnArtist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onNextArtistActivity();
-            }
-
-            private void onNextArtistActivity() {
-                Intent i = new Intent(ActivityRegistration.this, ArtistAddProfile.class);
-                startActivity(i);
-            }
-        });
-        rbtnCustomer = findViewById(R.id.radiobtn_customer);
-
-        rbtnCustomer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onNextCustomerActivity();
-            }
-
-            private void onNextCustomerActivity() {
-                Intent i = new Intent(ActivityRegistration.this, CustAddProfile.class);
-                startActivity(i);
-            }
-        });
 
         mAuth=FirebaseAuth.getInstance();
-
         edtRegEmail = findViewById(R.id.edtRegEmail);
         edtRegConfirmPass = findViewById(R.id.edtRegConfirmPass);
 
         btnReg= findViewById(R.id.btnReg);
-
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +55,7 @@ public class ActivityRegistration extends AppCompatActivity{
                              Toast.makeText(ActivityRegistration.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                              Intent loginIntent=new Intent(ActivityRegistration.this,ActivityLogIn.class);
                              startActivity(loginIntent);
+                             finish();
                          }
                          else
                          {

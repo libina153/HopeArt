@@ -8,10 +8,9 @@
 
     <ImageView
         android:id="@+id/imgSplash"
-        android:layout_width="135dp"
-        android:layout_height="118dp"
+        android:layout_width="397dp"
+        android:layout_height="624dp"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
-        android:src="@drawable/icon_hopeart_secondimg"/>
+        android:src="@drawable/icon_hope_art" />
 
 </LinearLayout>
