@@ -1,5 +1,6 @@
 package com.example.hopeart.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,13 +24,21 @@ import androidx.fragment.app.Fragment;
 
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -52,6 +61,7 @@ public class ArtistAddArtworkFragment extends Fragment {
     EditText edtArtworkPrice;
     Button btnSave;
 
+    StorageReference rootReference;
     FirebaseFirestore firebaseDB;
 
     @Override
@@ -73,6 +83,7 @@ public class ArtistAddArtworkFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseDB = FirebaseFirestore.getInstance();
+        rootReference= FirebaseStorage.getInstance().getReference();
 
         txtArtworkType = view.findViewById(R.id.txtArtWorkType);
         txtArtworkFramesize = view.findViewById(R.id.txtFrameSize);
@@ -177,6 +188,8 @@ public class ArtistAddArtworkFragment extends Fragment {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(ctx, "Data Added", Toast.LENGTH_SHORT).show();
+                                String insertedId=documentReference.getId();
+                                uploadImage(insertedId);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -194,7 +207,6 @@ public class ArtistAddArtworkFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 selectImage();
-                //      uploadImage();
             }
         });
     }
@@ -210,8 +222,8 @@ public class ArtistAddArtworkFragment extends Fragment {
         }
 
 
-            /*    private void uploadImage ()
-                {
+        private void uploadImage (String insId)
+        {
                     final ProgressDialog progressDialog = new ProgressDialog(ctx);
                     progressDialog.setTitle("Uploading...");
                     progressDialog.setCancelable(false);
@@ -225,6 +237,30 @@ public class ArtistAddArtworkFragment extends Fragment {
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     progressDialog.dismiss();
                                     Toast.makeText(ctx, "Upload Success..", Toast.LENGTH_LONG).show();
+                                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            String url=uri.toString();
+
+                                            Map<String,Object> upData=new HashMap<>();
+                                            upData.put("strArtWorkImage",url);
+
+                                            firebaseDB.collection("ArtWorkData")
+                                                    .document(insId)
+                                                    .update(upData)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(ctx, "Data Updated ", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(ctx, "Data Failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    });
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -240,7 +276,7 @@ public class ArtistAddArtworkFragment extends Fragment {
                             progressDialog.setMessage("Uploaded" + (int) progress + "%");
                         }
                     });
-                }*/
+                }
 
                 @Override
                 public void onActivityResult ( int requestCode, int resultCode,

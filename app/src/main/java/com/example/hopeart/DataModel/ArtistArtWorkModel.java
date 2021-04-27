@@ -44,12 +44,12 @@ public class ArtistArtWorkModel
     public Map<String,Object> toMap() {
         HashMap<String, Object> mapobj1 = new HashMap<>();
 
-        mapobj1.put("ArtWorkId", this.strArtWorkId);
-        mapobj1.put("ArtWorkType", this.strArtWorkType);
-        mapobj1.put("ArtWorkFrameSize", this.strArtWorkFrameSize);
-        mapobj1.put("ArtWorkPaperType", this.strArtWorkPaperType);
-        mapobj1.put("ArtWorkKImage", this.strArtWorkImage);
-        mapobj1.put("ArtWorkPrice", this.artWorkPrice);
+        mapobj1.put("strArtWorkId", this.strArtWorkId);
+        mapobj1.put("strArtWorkType", this.strArtWorkType);
+        mapobj1.put("strArtWorkFrameSize", this.strArtWorkFrameSize);
+        mapobj1.put("strArtWorkPaperType", this.strArtWorkPaperType);
+        mapobj1.put("strArtWorkImage", "");
+        mapobj1.put("artWorkPrice", this.artWorkPrice);
 
         return mapobj1;
     }
