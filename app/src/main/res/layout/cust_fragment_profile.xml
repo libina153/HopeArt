@@ -4,9 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/trupti" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_cust_name"
+        android:drawablePadding="10dp"
+        android:textSize="30dp"
+        android:text="Trupti"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile" />
+        android:drawableStart="@drawable/ic_cust_email"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="5dp"
+        android:text="tkbhat1230@gamil.com"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_cust_mobile"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="5dp"
+        android:text="9607552526"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_cust_address"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Ramanand Nagar,Bhusawal"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="130dp"
+        android:text="Update"/>
 
 </LinearLayout>
