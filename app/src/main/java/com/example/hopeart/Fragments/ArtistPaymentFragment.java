@@ -9,14 +9,30 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hopeart.Adaptar.ArtistHomeAdaptar;
+import com.example.hopeart.Adaptar.ArtistPaymentAdaptar;
+import com.example.hopeart.DataModel.ArtistArtWorkModel;
+import com.example.hopeart.DataModel.ArtistPaymentModel;
 import com.example.hopeart.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class ArtistPaymentFragment extends Fragment {
+
+    Context ctx;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        ctx=context;
     }
+
 
     @Nullable
     @Override
@@ -28,5 +44,25 @@ public class ArtistPaymentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        {
+            RecyclerView rvpayment = view.findViewById(R.id.paymentRecycleviewer);
+
+            ArtistPaymentModel a = new ArtistPaymentModel("1","1","1","Paymode","200","1","Status","02-03-2021");
+            ArtistPaymentModel a1 = new ArtistPaymentModel("2","2","2","Paymode","200","1","Status","02-03-2021");
+
+
+            List<ArtistPaymentModel> paymentlist = new ArrayList<>();
+
+            paymentlist.add(a);
+            paymentlist.add(a1);
+
+
+
+            ArtistPaymentAdaptar paymentAdaptar = new ArtistPaymentAdaptar(paymentlist, ctx);
+            rvpayment.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
+            rvpayment.setAdapter(paymentAdaptar);
+
+        }
+
     }
 }

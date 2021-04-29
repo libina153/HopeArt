@@ -3,16 +3,20 @@ package com.example.hopeart.Adaptar;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ArtistArtworkDetailActivity;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
@@ -45,6 +49,15 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
 
         holder.txtHomePrice.setText(String.valueOf(home.getArtWorkPrice()));
 
+        Glide.with(ctx)
+                .load(home.getStrArtWorkImage())
+                .into(holder.imgHomeImage);
+         holder.imgHomeMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+
+         });
     }
 
     @Override
@@ -54,7 +67,7 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView txtHomePrice;
-        ImageView imgHomeImage,imageHomeMenu;
+        ImageView imgHomeImage,imgHomeMenu;
 
 
 
@@ -63,7 +76,8 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
 
             this.txtHomePrice = itemView.findViewById(R.id.txtHomePrice);
             this.imgHomeImage = itemView.findViewById(R.id.imgHomeImage);
-            this.imageHomeMenu=itemView.findViewById(R.id.imgHomeMenu);
+            this.imgHomeMenu=itemView.findViewById(R.id.imgHomeMenu);
+
 
         }
 
@@ -71,5 +85,7 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
 
 
 }
+
+
 
 

@@ -9,6 +9,10 @@ public class ArtistArtworkOrderModel {
     float artworkPrice;
     String artworkPaperType;
 
+    public void setArtworkId(String artworkId) {
+        this.artworkId = artworkId;
+    }
+
     public String getArtworkId() {
         return artworkId;
     }

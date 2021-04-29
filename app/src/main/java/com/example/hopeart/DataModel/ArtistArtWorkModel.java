@@ -7,6 +7,9 @@ import java.util.Map;
 
 public class ArtistArtWorkModel
 {
+    public ArtistArtWorkModel() {
+    }
+
     String strArtWorkId,strArtWorkType,strArtWorkFrameSize,strArtWorkPaperType,strArtWorkImage;
     float artWorkPrice;
 
@@ -15,6 +18,10 @@ public class ArtistArtWorkModel
         this.strArtWorkFrameSize = strArtWorkFrameSize;
         this.strArtWorkPaperType = strArtWorkPaperType;
         this.artWorkPrice = artWorkPrice;
+    }
+
+    public void setStrArtWorkId(String strArtWorkId) {
+        this.strArtWorkId = strArtWorkId;
     }
 
     public String getStrArtWorkId() {

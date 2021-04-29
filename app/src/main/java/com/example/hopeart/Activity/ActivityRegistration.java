@@ -23,7 +23,7 @@ public class ActivityRegistration extends AppCompatActivity{
 
     EditText edtRegEmail,edtRegConfirmPass;
     FloatingActionButton btnReg;
-    RadioGroup radiobtn_artist;
+
     FirebaseAuth mAuth;
 
     @Override
@@ -40,6 +40,19 @@ public class ActivityRegistration extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 registerUser(edtRegEmail.getText().toString(),edtRegConfirmPass.getText().toString());
+                RadioGroup user=(RadioGroup)findViewById(R.id.rgUser);
+
+                switch (user.getCheckedRadioButtonId()) {
+                    case R.id.radiobtn_artist:
+                        Intent i = new Intent(ActivityRegistration.this, ArtistAddProfile.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.radiobtn_customer:
+                        Intent in = new Intent(ActivityRegistration.this, CustAddProfile.class);
+                        startActivity(in);
+                        break;
+                }
             }
         });
     }

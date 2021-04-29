@@ -15,19 +15,22 @@
 
             <ImageView
                 android:id="@+id/artwork_img"
-                android:layout_width="275dp"
-                android:layout_height="218dp"
+                android:layout_width="184dp"
+                android:layout_height="202dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/splash_activity_image" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_addphoto" />
 
 
             <TextView
                 android:id="@+id/txtArtWorkType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/txt_shapes"
+                android:gravity="center"
                 android:text="ArtWork Type"
                 android:textColor="#040303"
                 android:textSize="20dp" />
@@ -35,9 +38,12 @@
             <TextView
                 android:id="@+id/txtFrameSize"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:background="@drawable/txt_shapes"
                 android:text="Frame Size"
                 android:textColor="#040303"
                 android:textSize="20dp" />
@@ -45,9 +51,12 @@
             <TextView
                 android:id="@+id/txtPaperType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:background="@drawable/txt_shapes"
                 android:text="Paper Type"
                 android:textColor="#040303"
                 android:textSize="20dp" />
@@ -55,10 +64,13 @@
             <EditText
                 android:id="@+id/edtPrice"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:hint="Price"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:background="@drawable/txt_shapes"
+                android:text="Price"
                 android:textColor="#040303"
                 android:textSize="20dp" />
 
@@ -66,9 +78,12 @@
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
                 android:text="Save"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
         </LinearLayout>
     </ScrollView>

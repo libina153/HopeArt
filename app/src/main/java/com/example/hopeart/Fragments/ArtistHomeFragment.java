@@ -18,19 +18,26 @@ import com.example.hopeart.Adaptar.ArtistHomeAdaptar;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
 import com.example.hopeart.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArtistHomeFragment extends Fragment {
     Context ctx;
-
+    FirebaseFirestore DB;
 
     @Override
     public void onAttach(@NonNull Context context)
     {
         super.onAttach(context);
         ctx=context;
+        DB=FirebaseFirestore.getInstance();
     }
 
     @Nullable
@@ -46,28 +53,29 @@ public class ArtistHomeFragment extends Fragment {
 
         RecyclerView rvartworkHomeOrder=view.findViewById(R.id.artworkHomeRecycleviewer);
 
-        ArtistArtWorkModel a=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
-        ArtistArtWorkModel a1=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
-        ArtistArtWorkModel a2=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
-        ArtistArtWorkModel a3=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
-        ArtistArtWorkModel a4=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
-        ArtistArtWorkModel a5=new ArtistArtWorkModel("Painting","8*8","Cartridge Paper",800);
+        DB.collection("ArtWorkData")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<ArtistArtWorkModel> artworklist=new ArrayList<>();
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot doc : task.getResult()){
+                                ArtistArtWorkModel artworkModel=doc.toObject(ArtistArtWorkModel.class);
+                                artworkModel.setStrArtWorkId(doc.getId());
+                                artworklist.add(artworkModel);
+                            }
+                            ArtistHomeAdaptar homeAdaptar=new ArtistHomeAdaptar(artworklist,ctx);
+                            rvartworkHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,true));
+                            rvartworkHomeOrder.setAdapter(homeAdaptar);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 
-
-
-        List<ArtistArtWorkModel> homelist=new ArrayList<>();
-
-        homelist.add(a);
-        homelist.add(a1);
-        homelist.add(a2);
-        homelist.add(a3);
-        homelist.add(a4);
-        homelist.add(a5);
-
-
-        ArtistHomeAdaptar homeAdaptar=new ArtistHomeAdaptar(homelist,ctx);
-        rvartworkHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,true));
-        rvartworkHomeOrder.setAdapter(homeAdaptar);
-
+            }
+        });
     }
 }
+
