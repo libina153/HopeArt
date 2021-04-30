@@ -46,7 +46,8 @@ public class SharedPreferenceManger
     }
     public static boolean getIsRegistered(Context context)
     {
-        return MyApplication.getInstance().getSharedPreferences(context).getBoolean(SharedPreferencesKeyConstants.ISREGISTERED,false);
+        return MyApplication.getInstance().getSharedPreferences(context)
+                .getBoolean(SharedPreferencesKeyConstants.ISREGISTERED,false);
     }
 
     //AADHAR_NO

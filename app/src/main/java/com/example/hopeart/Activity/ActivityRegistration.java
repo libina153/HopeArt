@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,7 @@ public class ActivityRegistration extends AppCompatActivity{
 
     EditText edtRegEmail,edtRegConfirmPass;
     FloatingActionButton btnReg;
+    RadioGroup user;
 
     FirebaseAuth mAuth;
 
@@ -36,23 +38,13 @@ public class ActivityRegistration extends AppCompatActivity{
         edtRegConfirmPass = findViewById(R.id.edtRegConfirmPass);
 
         btnReg= findViewById(R.id.btnReg);
+        user=(RadioGroup)findViewById(R.id.rgUser);
+
+
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registerUser(edtRegEmail.getText().toString(),edtRegConfirmPass.getText().toString());
-                RadioGroup user=(RadioGroup)findViewById(R.id.rgUser);
-
-                switch (user.getCheckedRadioButtonId()) {
-                    case R.id.radiobtn_artist:
-                        Intent i = new Intent(ActivityRegistration.this, ArtistAddProfile.class);
-                        startActivity(i);
-                        break;
-
-                    case R.id.radiobtn_customer:
-                        Intent in = new Intent(ActivityRegistration.this, CustAddProfile.class);
-                        startActivity(in);
-                        break;
-                }
             }
         });
     }
@@ -65,6 +57,10 @@ public class ActivityRegistration extends AppCompatActivity{
                         public void onComplete(@NonNull Task<AuthResult> task) {
                          if(task.isSuccessful())
                          {
+
+                             SharedPreferenceManger.setIsRegistered(ActivityRegistration.this,true);
+                             SharedPreferenceManger.setUserType(ActivityRegistration.this,getCheckUserType());
+
                              Toast.makeText(ActivityRegistration.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                              Intent loginIntent=new Intent(ActivityRegistration.this,ActivityLogIn.class);
                              startActivity(loginIntent);
@@ -82,5 +78,14 @@ public class ActivityRegistration extends AppCompatActivity{
 
                 }
             });
+        }
+
+        private String getCheckUserType(){
+            int checkId=user.getCheckedRadioButtonId();
+            if (checkId==R.id.radiobtn_artist){
+                return "A";
+            }else {
+                return "C";
+            }
         }
 }

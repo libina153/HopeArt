@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ArtistArtworkDetailActivity;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
+import com.example.hopeart.Activity.ArtworkHomeDetailsActivity;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
 import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
@@ -52,9 +53,13 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
         Glide.with(ctx)
                 .load(home.getStrArtWorkImage())
                 .into(holder.imgHomeImage);
+
          holder.imgHomeMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent homeadap=new Intent(ctx, ArtworkHomeDetailsActivity.class);
+                ctx.startActivity(homeadap);
+
             }
 
          });

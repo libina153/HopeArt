@@ -5,9 +5,12 @@ public class ArtistArtworkOrderModel {
     String artistId;
     String artworktype;
     String artworkimg;
+    String imgHomeMenuImage;
     String artworkFrameSize;
     float artworkPrice;
     String artworkPaperType;
+
+
 
     public void setArtworkId(String artworkId) {
         this.artworkId = artworkId;
@@ -41,6 +44,8 @@ public class ArtistArtworkOrderModel {
         return artworkPaperType;
     }
 
+
+
     public ArtistArtworkOrderModel(String artworkId, String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType) {
         this.artworkId = artworkId;
         this.artistId = artistId;
@@ -49,6 +54,7 @@ public class ArtistArtworkOrderModel {
         this.artworkFrameSize = artworkFrameSize;
         this.artworkPrice = artworkPrice;
         this.artworkPaperType = artworkPaperType;
+
     }
 }
 

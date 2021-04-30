@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hopeart.Fragments.ArtistAddArtworkFragment;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -60,10 +61,20 @@ public class ActivityLogIn extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+
+                                    SharedPreferenceManger.setIsLogin(ActivityLogIn.this,true);
+
+                                    if (SharedPreferenceManger.getUserType(ActivityLogIn.this).equals("A")){
+                                        Intent homeIntent=new Intent(ActivityLogIn.this, ArtistHomeBottomNav.class);
+                                        startActivity(homeIntent);
+                                        finish();
+                                    }else{
+                                        Intent custHome=new Intent(ActivityLogIn.this, CustHomeDrawer.class);
+                                        startActivity(custHome);
+                                        finish();
+                                    }
                                     Toast.makeText(ActivityLogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent homeIntent=new Intent(ActivityLogIn.this, ArtistHomeBottomNav.class);
-                                    startActivity(homeIntent);
-                                    finish();
+
                                 }else{
                                     Toast.makeText(ActivityLogIn.this, "Login Error", Toast.LENGTH_SHORT).show();
 
