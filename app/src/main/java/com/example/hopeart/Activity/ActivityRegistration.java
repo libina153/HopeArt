@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class ActivityRegistration extends AppCompatActivity{
     EditText edtRegEmail,edtRegConfirmPass;
     FloatingActionButton btnReg;
     RadioGroup user;
+    TextView txtLogin;
 
     FirebaseAuth mAuth;
 
@@ -37,6 +39,8 @@ public class ActivityRegistration extends AppCompatActivity{
         edtRegEmail = findViewById(R.id.edtRegEmail);
         edtRegConfirmPass = findViewById(R.id.edtRegConfirmPass);
 
+        txtLogin=findViewById(R.id.txtLogin);
+
         btnReg= findViewById(R.id.btnReg);
         user=(RadioGroup)findViewById(R.id.rgUser);
 
@@ -47,7 +51,16 @@ public class ActivityRegistration extends AppCompatActivity{
                 registerUser(edtRegEmail.getText().toString(),edtRegConfirmPass.getText().toString());
             }
         });
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loginIntent=new Intent(ActivityRegistration.this,ActivityLogIn.class);
+                startActivity(loginIntent);
+                finish();
+            }
+        });
     }
+
 
         private void registerUser(String email,String pass)
         {
@@ -80,6 +93,7 @@ public class ActivityRegistration extends AppCompatActivity{
             });
         }
 
+
         private String getCheckUserType(){
             int checkId=user.getCheckedRadioButtonId();
             if (checkId==R.id.radiobtn_artist){
@@ -88,4 +102,5 @@ public class ActivityRegistration extends AppCompatActivity{
                 return "C";
             }
         }
+
 }
