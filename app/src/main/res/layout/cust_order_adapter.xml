@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/imgOrderArtwork"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:src="@drawable/splash_activity_image" />
+
+
+    <TextView
+        android:id="@+id/txtOrderDate"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/txtOrderStatus"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="150dp"
+        android:text="Order Date"
+        android:textColor="#040303" />
+
+    <TextView
+        android:id="@+id/txtOrderStatus"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:textColor="#040303"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/txtOrderType"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="183dp"
+        android:layout_marginRight="150dp"
+        android:text="Order Status" />
+
+
+    <TextView
+        android:id="@+id/txtOrderType"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="150dp"
+        android:text="Order Type"
+        android:textColor="#040303" />
+
+    <TextView
+        android:id="@+id/txtOrderAmount"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/txtOrderDate"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="183dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="104dp"
+        android:text="Order Amount"
+        android:textColor="#040303" />
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/cartCancleImage"
+        android:layout_width="130dp"
+        android:layout_height="125dp"
+        android:src="@drawable/splash_activity_image" />
+
+    <TextView
+        android:id="@+id/txtCartPrice"
+        android:layout_width="115dp"
+        android:layout_height="26dp"
+        android:textColor="#040303"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="150dp"
+        android:text="Cart Price" />
+
+
+
+    <Button
+        android:id="@+id/btnCartRemove"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="43dp"
+        android:text="Remove" />
+
+
+</RelativeLayout>
