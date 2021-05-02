@@ -48,6 +48,7 @@
 
         <activity android:name=".Activity.ArtistArtworkDetailActivity"/>
         <activity android:name=".Activity.ArtistCustomDetailActivity"/>
+        <activity android:name=".Activity.ArtworkHomeDetailsActivity"/>
 
     </application>
 

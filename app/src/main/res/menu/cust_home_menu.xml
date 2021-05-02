@@ -21,5 +21,9 @@
         android:id="@+id/cust_bookyourordermenu"
         android:title="Book your order"
         android:icon="@drawable/ic_payment_icon"/>
+    <item
+        android:id="@+id/cust_cardmenu"
+        android:title="Cart"
+        android:icon="@drawable/ic_cust_cart"/>
 
 </menu>

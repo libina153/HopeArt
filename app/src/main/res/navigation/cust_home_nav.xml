@@ -29,6 +29,11 @@
         android:label="order"
         tools:layout="@layout/cust_fragment_order"
         android:name="com.example.hopeart.Fragments.CustOrderFragment"/>
+    <fragment
+        android:id="@+id/cust_cardmenu"
+        android:label="Cart"
+        tools:layout="@layout/cust_fragment_cart"
+        android:name="com.example.hopeart.Fragments.CustCartFragment"/>
 
 
 </navigation>
