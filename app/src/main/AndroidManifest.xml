@@ -25,7 +25,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Activity.ActivityLogIn"
@@ -44,11 +43,16 @@
     <activity
         android:name=".Activity.CustHomeDrawer"
         android:label="@string/title_activity_cust_drawer"
-        android:theme="@style/Theme.HopeArt.NoActionBar"></activity>
+        android:theme="@style/Theme.HopeArt.NoActionBar">
+
+    </activity>
 
         <activity android:name=".Activity.ArtistArtworkDetailActivity"/>
         <activity android:name=".Activity.ArtistCustomDetailActivity"/>
-        <activity android:name=".Activity.ArtworkHomeDetailsActivity"/>
+
+        <activity android:name=".Activity.ArtworkHomeDetailsActivity"
+            android:theme="@style/Theme.HopeArt"/>
+
 
     </application>
 

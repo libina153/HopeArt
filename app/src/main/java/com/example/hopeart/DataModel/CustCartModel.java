@@ -1,20 +1,33 @@
 package com.example.hopeart.DataModel;
 
-public class CustCartModel
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
+
+@Entity
+public class CustCartModel implements Serializable
 {
-    public CustCartModel(){
-    }
 
-    String strCartImg,strFrameSize;
-    Float custCardPrice;
-    int custCardId;
+    @ColumnInfo(name = "strCartImg")
+    String strCartImg;
+    @ColumnInfo(name = "strFrameSize")
+    String strFrameSize;
+    @ColumnInfo(name = "custCardPrice")
+    Float custCartPrice;
+    @PrimaryKey(autoGenerate = true)
+    int custCartId;
 
-    public CustCartModel(String strCartImg, String strFrameSize, Float custCardPrice, int custCardId) {
-        this.custCardId = custCardId;
+    @Ignore
+    public CustCartModel(String strCartImg, String strFrameSize, Float custCartPrice) {
         this.strCartImg = strCartImg;
         this.strFrameSize = strFrameSize;
-        this.custCardPrice = custCardPrice;
+        this.custCartPrice = custCartPrice;
+    }
 
+    public CustCartModel() {
     }
 
     public String getStrCartImg() {
@@ -25,12 +38,12 @@ public class CustCartModel
         return strFrameSize;
     }
 
-    public Float getCustCardPrice() {
-        return custCardPrice;
+    public Float getCustCartPrice() {
+        return custCartPrice;
     }
 
-    public int getCustCardId() {
-        return custCardId;
+    public int getCustCartId() {
+        return custCartId;
     }
 
     public void setStrCartImg(String strCartImg) {
@@ -41,11 +54,11 @@ public class CustCartModel
         this.strFrameSize = strFrameSize;
     }
 
-    public void setCustCardPrice(Float custCardPrice) {
-        this.custCardPrice = custCardPrice;
+    public void setCustCartPrice(Float custCartPrice) {
+        this.custCartPrice = custCartPrice;
     }
 
-    public void setCustCardId(int custCardId) {
-        this.custCardId = custCardId;
+    public void setCustCartId(int custCartId) {
+        this.custCartId = custCartId;
     }
 }

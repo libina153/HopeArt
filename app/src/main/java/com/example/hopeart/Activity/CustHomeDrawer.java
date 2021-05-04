@@ -3,12 +3,15 @@ package com.example.hopeart.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.CompoundButton;
 
 import com.example.hopeart.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -46,6 +49,27 @@ public class CustHomeDrawer extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //for changing dark and light theme
+
+        View headerView=navigationView.getHeaderView(0);
+        SwitchCompat swCompact=headerView.findViewById(R.id.scDarkLight);
+
+        swCompact.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    getDelegate().applyDayNight();
+                    compoundButton.setText("Light");
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    getDelegate().applyDayNight();
+                    compoundButton.setText("Dark");
+                }
+            }
+        });
+
     }
 
     @Override

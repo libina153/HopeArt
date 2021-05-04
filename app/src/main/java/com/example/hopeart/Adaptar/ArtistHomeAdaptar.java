@@ -54,7 +54,7 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
                 .load(home.getStrArtWorkImage())
                 .into(holder.imgHomeImage);
 
-         holder.imgHomeMenu.setOnClickListener(new View.OnClickListener() {
+         holder.imgHomeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent homeadap=new Intent(ctx, ArtworkHomeDetailsActivity.class);

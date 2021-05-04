@@ -2,10 +2,11 @@ package com.example.hopeart.DataModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArtistArtWorkModel
+public class ArtistArtWorkModel implements Serializable
 {
     public ArtistArtWorkModel() {
     }

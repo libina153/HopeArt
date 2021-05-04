@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hopeart.DataModel.CustCartModel;
 import com.example.hopeart.R;
 
@@ -37,9 +38,11 @@ public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.ItemVi
     {
       CustCartModel custcart=cartlist.get(position);
 
-      holder.txtCartPrice.setText(String.valueOf(custcart.getCustCardPrice()));
+      holder.txtCartPrice.setText(String.valueOf(custcart.getCustCartPrice()));
 
-
+        Glide.with(ctx)
+                .load(custcart.getStrCartImg())
+                .into(holder.imgCart);
     }
 
     public int getItemCount(){return cartlist.size();}

@@ -65,11 +65,11 @@ public class ActivityLogIn extends AppCompatActivity {
                                     SharedPreferenceManger.setIsLogin(ActivityLogIn.this,true);
 
                                     if (SharedPreferenceManger.getUserType(ActivityLogIn.this).equals("A")){
-                                        Intent homeIntent=new Intent(ActivityLogIn.this, ArtistHomeBottomNav.class);
+                                        Intent homeIntent=new Intent(ActivityLogIn.this, ArtistAddProfile.class);
                                         startActivity(homeIntent);
                                         finish();
                                     }else{
-                                        Intent custHome=new Intent(ActivityLogIn.this, CustHomeDrawer.class);
+                                        Intent custHome=new Intent(ActivityLogIn.this, CustAddProfile.class);
                                         startActivity(custHome);
                                         finish();
                                     }

@@ -18,6 +18,8 @@ import com.example.hopeart.Adaptar.CustOrderAdapter;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
 import com.example.hopeart.DataModel.CustCartModel;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.AppDatabase;
+import com.example.hopeart.Utility.DatabaseClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +49,13 @@ public class CustCartFragment extends Fragment
 
         RecyclerView rvcustcart=view.findViewById(R.id.custCartRecycleviewer);
 
-        CustCartModel c=new CustCartModel("image","4*5",500.0f,1);
-        CustCartModel c1=new CustCartModel("image","4*5",300.0f,2);
-
         List<CustCartModel> cartlist=new ArrayList<>();
 
-        cartlist.add(c);
-        cartlist.add(c1);
+        AppDatabase appDatabase= DatabaseClient
+                            .getInstance(ctx)
+                            .getAppDatabase();
+
+        cartlist=appDatabase.custCartDao().getCustCartModel();
 
         CustCartAdapter cartAdapter=new CustCartAdapter(cartlist,ctx);
         rvcustcart.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));

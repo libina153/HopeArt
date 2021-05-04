@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hopeart.R;
 
-public class ArtistArtworkDetailActivity extends AppCompatActivity {
-
+public class CustPlaceOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.artist_activity_artworkdetails);
+        setContentView(R.layout.cust_activity_placeorder);
     }
 }

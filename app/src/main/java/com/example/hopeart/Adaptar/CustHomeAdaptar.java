@@ -46,11 +46,12 @@ public class CustHomeAdaptar extends RecyclerView.Adapter<CustHomeAdaptar.ItemVi
                 .into(holder.imgcustHomeImage);
 
 
-        holder.imgcustHomeMenu.setOnClickListener(new View.OnClickListener() {
+        holder.imgcustHomeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeadap=new Intent(ctx, ArtworkHomeDetailsActivity.class);
-                ctx.startActivity(homeadap);
+                Intent detailIntent=new Intent(ctx, ArtworkHomeDetailsActivity.class);
+                detailIntent.putExtra("model",home);
+                ctx.startActivity(detailIntent);
 
             }
 
