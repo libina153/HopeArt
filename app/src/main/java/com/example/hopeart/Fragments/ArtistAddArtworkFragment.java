@@ -48,8 +48,8 @@ public class ArtistAddArtworkFragment extends Fragment {
     String strArtworkType, strArtWorkFrameSize, strArtWorkPaperType;
 
     String[] ArtWorkType = {"Sketching", "Painting"};
-    String[] ArtworkFrameSize = {"4*6", "5*7", "6*8", "5*8", "8*8", "8*10", "10*12", "20*24"};
-    String[] ArtworkPaperType = {"Art A3(Margin 35)", "Art A4(Margin 35)", "Art Letter", "CD-R tray", "CD-R tray A"};
+    String[] ArtworkFrameSize = {"4*6", "5*7", "6*8", "5*8", "8*8"};
+    String[] ArtworkPaperType = {"Matt Coated", "Silk Coated", "Watermarked", "Kraft Paper"};
 
     private Uri filePath;
 

@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gallery"
-            android:id="@+id/custGallery"
+            android:id="@+id/txtCustGallery"
             android:textSize="20dp"
             android:drawableStart="@drawable/ic_cust_gallery"
             android:drawablePadding="10dp"/>
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Camera"
-            android:id="@+id/custCamera"
+            android:id="@+id/txtCustCamera"
             android:textSize="20dp"
             android:layout_marginLeft="30dp"
             android:drawableStart="@drawable/ic_cust_camera"
@@ -43,15 +43,15 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:id="@+id/custBookImage"
+            android:id="@+id/imgcustBookOrder"
             android:layout_gravity="center"
             android:src="@drawable/splash_activity_image"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Frame Size"
-            android:id="@+id/custBookFrameSize"
+            android:text="Artwork Type"
+            android:id="@+id/txtCustBookArtworkType"
             android:textSize="20dp"
             />
         <TextView
@@ -59,17 +59,18 @@
             android:layout_height="wrap_content"
             android:text="Paper Type"
             android:layout_marginTop="10dp"
-            android:id="@+id/custBookPaperType"
+            android:id="@+id/txtCustBookPaperType"
             android:textSize="20dp"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Artwork Type"
+            android:text="Frame Size"
             android:layout_marginTop="10dp"
-            android:id="@+id/custBookArtworkType"
+            android:id="@+id/txtCustBookFrameSize"
             android:textSize="20dp"
             />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

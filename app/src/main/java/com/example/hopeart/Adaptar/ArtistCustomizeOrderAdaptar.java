@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ActivityLogIn;
 import com.example.hopeart.Activity.ActivitySplash;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
@@ -53,6 +54,10 @@ public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCust
 
             }
         });
+
+        Glide.with(ctx)
+                .load(customorder.getCustomPhoto())
+                .into(holder.imgCustomImage);
 
     }
 
