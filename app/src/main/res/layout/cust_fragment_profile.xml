@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_cust_name"
         android:drawablePadding="10dp"
-        android:text="Trupti"
+        android:text="Name"
         android:layout_marginTop="15dp"
         android:textSize="25dp" />
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="15dp"
         android:drawableStart="@drawable/ic_cust_email"
         android:drawablePadding="10dp"
-        android:text="tkbhat1230@gmail.com"
+        android:text="Email Id"
         android:textSize="25dp" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:drawablePadding="10dp"
         android:layout_marginTop="15dp"
         android:textSize="25dp"
-        android:text="9607552526"/>
+        android:text="Mobile No."/>
 
     <TextView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:drawablePadding="10dp"
         android:layout_marginTop="15dp"
         android:textSize="25dp"
-        android:text="Ramanand Nagar,Bhusawal"/>
+        android:text="Address"/>
 
     <Button
         android:layout_width="wrap_content"

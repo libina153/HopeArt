@@ -1,10 +1,12 @@
 package com.example.hopeart.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hopeart.Activity.ActivityLogIn;
+import com.example.hopeart.Activity.ActivityRegistration;
+import com.example.hopeart.Activity.CustHomeDrawer;
 import com.example.hopeart.Adaptar.ArtistHomeAdaptar;
 import com.example.hopeart.Adaptar.ArtistPaymentAdaptar;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
@@ -45,6 +50,7 @@ public class ArtistPaymentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         {
+
             RecyclerView rvpayment = view.findViewById(R.id.paymentRecycleviewer);
 
             ArtistPaymentModel a = new ArtistPaymentModel("1","1","1","Paymode","200","1","Status","02-03-2021");
@@ -61,6 +67,8 @@ public class ArtistPaymentFragment extends Fragment {
             ArtistPaymentAdaptar paymentAdaptar = new ArtistPaymentAdaptar(paymentlist, ctx);
             rvpayment.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
             rvpayment.setAdapter(paymentAdaptar);
+
+
 
         }
 
