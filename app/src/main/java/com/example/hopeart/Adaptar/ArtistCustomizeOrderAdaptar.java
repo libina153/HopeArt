@@ -32,6 +32,10 @@ public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCust
         this.ctx = ctx;
     }
 
+    public void setCustomlist(List<ArtistCustomizeOrderModel> customlist) {
+        this.customlist = customlist;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -50,6 +54,7 @@ public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCust
             @Override
             public void onClick(View view) {
                 Intent cudetail=new Intent(ctx, ArtistCustomDetailActivity.class);
+                cudetail.putExtra("model",customorder);
                 ctx.startActivity(cudetail);
 
             }

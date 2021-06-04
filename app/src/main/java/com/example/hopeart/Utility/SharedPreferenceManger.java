@@ -112,4 +112,14 @@ public class SharedPreferenceManger
     {
         return  MyApplication.getInstance().getSharedPreferences(context).getString(SharedPreferencesKeyConstants.USER_TYPE,"");
     }
+
+    //IsProfile
+    public static boolean setIsProfile(Context context,boolean isProfile)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).edit().putBoolean(SharedPreferencesKeyConstants.IsProfile,isProfile).commit();
+    }
+    public static boolean getIsProfile(Context context)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).getBoolean(SharedPreferencesKeyConstants.IsProfile,false);
+    }
 }

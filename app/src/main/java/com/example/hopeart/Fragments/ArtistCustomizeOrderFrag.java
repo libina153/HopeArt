@@ -1,13 +1,16 @@
 package com.example.hopeart.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,6 +36,13 @@ import java.util.List;
 public class ArtistCustomizeOrderFrag extends Fragment {
     Context ctx;
     FirebaseFirestore DB;
+    TextView txtSelectOrderStatus;
+    List<ArtistCustomizeOrderModel> orderlist=null;
+    ArtistCustomizeOrderAdaptar artworkadapter=null;
+
+    String strSelectOrderStatus;
+
+    String[] SelectOrderStatus = {"Approved", "Pending","Cancel"};
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -54,21 +64,73 @@ public class ArtistCustomizeOrderFrag extends Fragment {
 
         RecyclerView rvcustomOrder=view.findViewById(R.id.customRecycleviewer);
 
+        txtSelectOrderStatus=view.findViewById(R.id.txtSelectOrderStatus);
 
+        txtSelectOrderStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+                builder.setTitle("Select Order Status")
+                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setSingleChoiceItems(SelectOrderStatus, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position) {
+                                txtSelectOrderStatus.setText(SelectOrderStatus[position]);
+                                strSelectOrderStatus= (SelectOrderStatus[position]);
+
+                                orderlist.clear();
+                                DB.collection("CustomOrderData")
+                                        .whereEqualTo("customOrderStatus",strSelectOrderStatus)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                orderlist=new ArrayList<>();
+                                                if (task.isSuccessful()){
+                                                    for (DocumentSnapshot doc : task.getResult()){
+                                                        ArtistCustomizeOrderModel orderModel=doc.toObject(ArtistCustomizeOrderModel.class);
+                                                        orderModel.setCustomid(doc.getId());
+                                                        orderlist.add(orderModel);
+                                                    }
+                                                    artworkadapter.setCustomlist(orderlist);
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                    }
+                                });
+
+
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setIcon(R.drawable.ic_launcher_background)
+                        .setCancelable(false);
+                builder.create().show();
+            }
+        });
 
         DB.collection("CustomOrderData")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        List<ArtistCustomizeOrderModel> orderlist=new ArrayList<>();
+                        orderlist=new ArrayList<>();
                         if (task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult()){
                                 ArtistCustomizeOrderModel orderModel=doc.toObject(ArtistCustomizeOrderModel.class);
                                 orderModel.setCustomid(doc.getId());
                                 orderlist.add(orderModel);
                             }
-                            ArtistCustomizeOrderAdaptar artworkadapter=new ArtistCustomizeOrderAdaptar(orderlist,ctx);
+                            artworkadapter=new ArtistCustomizeOrderAdaptar(orderlist,ctx);
                                rvcustomOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
                                rvcustomOrder.setAdapter(artworkadapter);
                         }
