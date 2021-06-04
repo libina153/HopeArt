@@ -54,9 +54,7 @@ public class CustHomeAdaptar extends RecyclerView.Adapter<CustHomeAdaptar.ItemVi
                 ctx.startActivity(detailIntent);
 
             }
-
         });
-
     }
 
     @Override
@@ -68,19 +66,13 @@ public class CustHomeAdaptar extends RecyclerView.Adapter<CustHomeAdaptar.ItemVi
         TextView txtcustHomePrice;
         ImageView imgcustHomeImage,imgcustHomeMenu;
 
-
-
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             this.txtcustHomePrice = itemView.findViewById(R.id.txtcustHomePrice);
             this.imgcustHomeImage = itemView.findViewById(R.id.imgcustHomeImage);
             this.imgcustHomeMenu=itemView.findViewById(R.id.imgcustHomeMenu);
-
-
         }
 
     }
-
-
 }

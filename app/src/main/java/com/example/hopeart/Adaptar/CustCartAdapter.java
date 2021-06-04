@@ -1,6 +1,7 @@
 package com.example.hopeart.Adaptar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.hopeart.Activity.ArtistCustomDetailActivity;
+import com.example.hopeart.Activity.CustPlaceOrderActivity;
 import com.example.hopeart.DataModel.CustCartModel;
 import com.example.hopeart.R;
 
@@ -39,19 +42,32 @@ public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.ItemVi
       CustCartModel custcart=cartlist.get(position);
 
       holder.txtCartPrice.setText(String.valueOf(custcart.getCustCartPrice()));
+        holder.txtCartFrameSize.setText(custcart.getStrFrameSize());
 
         Glide.with(ctx)
                 .load(custcart.getStrCartImg())
                 .into(holder.imgCart);
+
+        holder.btnplaceorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent placeorder=new Intent(ctx, CustPlaceOrderActivity.class);
+                ctx.startActivity(placeorder);
+
+            }
+        });
+
+
     }
 
     public int getItemCount(){return cartlist.size();}
 
     public class ItemViewHolder extends RecyclerView.ViewHolder
     {
-        TextView txtCartPrice;
+        TextView txtCartPrice,txtCartFrameSize;
         ImageView imgCart;
-        Button btnCartRemove;
+        ImageView imgCartRemove;
+        Button btnplaceorder;
 
         public ItemViewHolder(View itemview)
         {
@@ -59,7 +75,9 @@ public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.ItemVi
 
             this.txtCartPrice=itemview.findViewById(R.id.txtCartPrice);
             this.imgCart=itemview.findViewById(R.id.cartCancleImage);
-            this.btnCartRemove=itemview.findViewById(R.id.btnCartRemove);
+            this.imgCartRemove=itemview.findViewById(R.id.imgCartRemove);
+            this.btnplaceorder=itemview.findViewById(R.id.btnPlaceOrder);
+            this.txtCartFrameSize=itemview.findViewById(R.id.txtCartFrameSize);
         }
     }
 }

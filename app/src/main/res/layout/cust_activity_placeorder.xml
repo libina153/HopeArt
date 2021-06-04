@@ -4,75 +4,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/placeOrderRecycleviewer"
+
+    <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="167dp"
+        android:layout_gravity="center"
+        android:src="@drawable/splash_activity_image" />
+
+    <LinearLayout
+        android:id="@+id/lytTotalRs"
+        android:layout_below="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/poTotal"
+        android:id="@+id/txtFrameSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/placeOrderRecycleviewer"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="14dp"
-        android:text="Total"
+        android:text="FrameSize"
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/poRs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/placeOrderRecycleviewer"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="14dp"
-        android:layout_toEndOf="@+id/poTotal"
-        android:text="Rs"
-        android:textSize="25dp" />
+        <TextView
+            android:id="@+id/txtPaperType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PaperType"
+            android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/poArtistName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/poRs"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="38dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:text="Artist Name" />
-    <TextView
-        android:id="@+id/poArtistAdress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/poArtistName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:text="Artist Address" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/poMobno"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/poArtistAdress"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:text="Mobile Number" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/poMobno"
-        android:layout_marginTop="15dp"
-        android:textSize="20dp"
-        android:text="Place Order"/>
+        android:layout_margin="5dp"
+        android:layout_below="@+id/lytTotalRs"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtRs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Rs"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtArtistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Artist Name"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtArtistAdress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Artist Address"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtArtistMobno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Mobile Number"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btnplaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Place Order"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

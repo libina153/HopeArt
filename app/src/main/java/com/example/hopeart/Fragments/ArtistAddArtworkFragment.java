@@ -45,7 +45,7 @@ import static android.app.Activity.RESULT_OK;
 public class ArtistAddArtworkFragment extends Fragment {
 
     Context ctx;
-    String strArtworkType, strArtWorkFrameSize, strArtWorkPaperType;
+    String strArtworkType, strArtWorkFrameSize, strArtWorkPaperType,strArtWorkImage;
 
     String[] ArtWorkType = {"Sketching", "Painting"};
     String[] ArtworkFrameSize = {"4*6", "5*7", "6*8", "5*8", "8*8"};
@@ -119,7 +119,6 @@ public class ArtistAddArtworkFragment extends Fragment {
             }
         });
 
-
         txtArtworkFramesize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,7 +143,6 @@ public class ArtistAddArtworkFragment extends Fragment {
                 builder.create().show();
             }
         });
-
 
         txtArtworkPaperType.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,7 +176,7 @@ public class ArtistAddArtworkFragment extends Fragment {
 
                 ArtistArtWorkModel st=new ArtistArtWorkModel(
                         strArtworkType,strArtWorkFrameSize,
-                        strArtWorkPaperType,artWorkPrice);
+                        strArtWorkPaperType,artWorkPrice,strArtWorkImage);
 
                 Map<String,Object> data=st.toMap();
 
@@ -197,11 +195,8 @@ public class ArtistAddArtworkFragment extends Fragment {
                         Toast.makeText(ctx, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
-
-
 
         imgShow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,7 +206,6 @@ public class ArtistAddArtworkFragment extends Fragment {
         });
     }
 
-
         private void selectImage (){
             Intent intent = new Intent();
             intent.setType("image/*");
@@ -220,7 +214,6 @@ public class ArtistAddArtworkFragment extends Fragment {
                     Intent.createChooser(
                             intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
         }
-
 
         private void uploadImage (String insId)
         {

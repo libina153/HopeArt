@@ -14,11 +14,12 @@ public class ArtistArtWorkModel implements Serializable
     String strArtWorkId,strArtWorkType,strArtWorkFrameSize,strArtWorkPaperType,strArtWorkImage;
     float artWorkPrice;
 
-    public ArtistArtWorkModel(String strArtWorkType, String strArtWorkFrameSize, String strArtWorkPaperType, float artWorkPrice) {
+    public ArtistArtWorkModel(String strArtWorkType, String strArtWorkFrameSize, String strArtWorkPaperType, float artWorkPrice,String strArtWorkImage) {
         this.strArtWorkType = strArtWorkType;
         this.strArtWorkFrameSize = strArtWorkFrameSize;
         this.strArtWorkPaperType = strArtWorkPaperType;
         this.artWorkPrice = artWorkPrice;
+        this.strArtWorkImage=strArtWorkImage;
     }
 
     public void setStrArtWorkId(String strArtWorkId) {
@@ -56,7 +57,7 @@ public class ArtistArtWorkModel implements Serializable
         mapobj1.put("strArtWorkType", this.strArtWorkType);
         mapobj1.put("strArtWorkFrameSize", this.strArtWorkFrameSize);
         mapobj1.put("strArtWorkPaperType", this.strArtWorkPaperType);
-        mapobj1.put("strArtWorkImage", "");
+        mapobj1.put("strArtWorkImage", this.strArtWorkImage);
         mapobj1.put("artWorkPrice", this.artWorkPrice);
 
         return mapobj1;

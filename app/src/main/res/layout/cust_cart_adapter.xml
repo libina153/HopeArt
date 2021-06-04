@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/cartCancleImage"
@@ -8,32 +10,46 @@
         android:layout_height="125dp"
         android:src="@drawable/splash_activity_image" />
 
-    <TextView
-        android:id="@+id/txtCartPrice"
-        android:layout_width="115dp"
-        android:layout_height="26dp"
-        android:textColor="#040303"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="150dp"
-        android:text="Cart Price" />
+    <LinearLayout
+        android:id="@+id/layoutCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cartCancleImage"
+        android:layout_margin="5dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtCartPrice"
+            android:layout_width="104dp"
+            android:layout_height="26dp"
+            android:text="Cart Price"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/txtCartFrameSize"
+            android:layout_width="104dp"
+            android:layout_height="26dp"
+            android:text="Frame Size"
+            android:textSize="15dp" />
 
 
 
-    <Button
-        android:id="@+id/btnCartRemove"
+
+        <Button
+        android:id="@+id/btnPlaceOrder"
         android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="43dp"
-        android:text="Remove" />
+            android:textSize="15dp"
+        android:text="Place Order" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgCartRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/layoutCart"
+        android:src="@drawable/ic_cut_icon" />
 
 
 </RelativeLayout>

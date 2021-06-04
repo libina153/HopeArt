@@ -5,7 +5,13 @@ public class CustOrderModel
    public CustOrderModel()
    {
    }
-   String strOrderId,strOrderDate,strOrderStatus,strOrderArtworkImg,strOrderCustId,strOrderFrameSize,strOrderType;
+   String strOrderId
+           ,strOrderDate
+           ,strOrderStatus
+           ,strOrderArtworkImg
+           ,strOrderCustId
+           ,strOrderFrameSize
+           ,strOrderType;
    Float Amount;
 
     public CustOrderModel(String strOrderId, String strOrderDate, String strOrderStatus, String strOrderArtworkImg, String strOrderCustId, String strOrderFrameSize, String strOrderType, Float amount) {

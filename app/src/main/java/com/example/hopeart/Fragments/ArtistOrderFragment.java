@@ -49,7 +49,9 @@ public class ArtistOrderFragment extends Fragment {
         myViewPagerAdapter.addFragment(new ArtistCustomizeOrderFrag(),"Custom");
 
         mViewPager.setAdapter(myViewPagerAdapter);
+        myViewPagerAdapter.notifyDataSetChanged();
         mTabLayout.setupWithViewPager(mViewPager);
+
     }
 
     class MyViewPagerAdapter extends FragmentPagerAdapter

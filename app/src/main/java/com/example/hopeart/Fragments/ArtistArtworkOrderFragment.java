@@ -42,19 +42,10 @@ public class ArtistArtworkOrderFragment extends Fragment{
 
         RecyclerView rvartworkOrder=view.findViewById(R.id.artworkRecycleviewer);
 
-        ArtistArtworkOrderModel a=new ArtistArtworkOrderModel("1","1","Painting","image","8*10",900,"Wet Strength Cartridge Paper");
-        ArtistArtworkOrderModel a1=new ArtistArtworkOrderModel("2","2","Sketch","image","8*10",900,"Wet Strength Cartridge Paper");
-        ArtistArtworkOrderModel a2=new ArtistArtworkOrderModel("3","3","Painting","image","8*10",900,"Wet Strength Cartridge Paper");
-        ArtistArtworkOrderModel a3=new ArtistArtworkOrderModel("4","4","Painting","image","8*10",900,"Wet Strength Cartridge Paper");
-        ArtistArtworkOrderModel a4=new ArtistArtworkOrderModel("5","5","Painting","image","8*10",900,"Wet Strength Cartridge Paper");
+
 
         List<ArtistArtworkOrderModel> artworklist=new ArrayList<>();
 
-        artworklist.add(a);
-        artworklist.add(a1);
-        artworklist.add(a2);
-        artworklist.add(a3);
-        artworklist.add(a4);
 
         ArtistArtworkOrderAdaptar artworkadapter=new ArtistArtworkOrderAdaptar(artworklist,ctx);
         rvartworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));

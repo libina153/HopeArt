@@ -119,8 +119,6 @@ public class CustAddProfile extends AppCompatActivity {
             }
         });
     }
-
-
     private void selectImage (){
         Intent intent = new Intent();
         intent.setType("image/*");

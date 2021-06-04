@@ -1,6 +1,7 @@
 package com.example.hopeart.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hopeart.Activity.ActivityLogIn;
+import com.example.hopeart.Activity.ActivityRegistration;
+import com.example.hopeart.Activity.CustPlaceOrderActivity;
 import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
 import com.example.hopeart.Adaptar.CustCartAdapter;
 import com.example.hopeart.Adaptar.CustOrderAdapter;
@@ -60,5 +64,8 @@ public class CustCartFragment extends Fragment
         CustCartAdapter cartAdapter=new CustCartAdapter(cartlist,ctx);
         rvcustcart.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
         rvcustcart.setAdapter(cartAdapter);
+
+        Intent loginIntent=new Intent(ctx, CustPlaceOrderActivity.class);
+        startActivity(loginIntent);
     }
 }

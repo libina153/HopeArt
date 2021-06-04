@@ -49,8 +49,6 @@ public class ArtistAddProfile extends AppCompatActivity {
     String userAadharImg;
     String userProfileImg;
 
-
-
     EditText edtArtistName,edtArtistMobno,edtArtistAddress,edtArtistAadhaar,edtArtistEmail;
     Button pUploadAadhar,pUploadHandicapCerti;
 
@@ -81,7 +79,6 @@ public class ArtistAddProfile extends AppCompatActivity {
         firebaseDB = FirebaseFirestore.getInstance();
         rootReference= FirebaseStorage.getInstance().getReference();
 
-
         ActivityCompat.requestPermissions(ArtistAddProfile.this,new String[]{
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -97,8 +94,6 @@ public class ArtistAddProfile extends AppCompatActivity {
                 userEmail=edtArtistEmail.getText().toString();
                 userAadhar=edtArtistAadhaar.getText().toString();
                 userAddress=edtArtistAddress.getText().toString();
-
-
 
                 UserProfileModel st=new UserProfileModel(userId,userName,userMobileNo,
                         userAddress,userEmail,"Artist",userAadhar,

@@ -23,7 +23,7 @@ import com.example.hopeart.Utility.DatabaseClient;
 
 public class ArtworkHomeDetailsActivity extends AppCompatActivity {
 
-    Button btnAddwishList,btnAddCart;
+    Button btnAddwishList,btnPlaceOrder;
     TextView txtHDArtworkType,txtHDFrameSize,txtHDPaperType,txtHDPrice;
     ImageView imgHD;
 
@@ -41,7 +41,7 @@ public class ArtworkHomeDetailsActivity extends AppCompatActivity {
         txtHDPrice=findViewById(R.id.txtHDPrice);
         imgHD=findViewById(R.id.imgHD);
 
-        Glide.with(ArtworkHomeDetailsActivity.this)
+        Glide.with(this)
                 .load(artModel.getStrArtWorkImage())
                 .into(imgHD);
 
@@ -51,21 +51,18 @@ public class ArtworkHomeDetailsActivity extends AppCompatActivity {
         txtHDPrice.setText(String.valueOf(artModel.getArtWorkPrice()));
 
         btnAddwishList=findViewById(R.id.btnAddWishList);
-        btnAddCart=findViewById(R.id.btnAddCart);
+        btnPlaceOrder=findViewById(R.id.btnPlaceOrder);
 
         AppDatabase appDatabase= DatabaseClient
                                 .getInstance(getApplicationContext())
                                 .getAppDatabase();
 
-        btnAddCart.setOnClickListener(new View.OnClickListener() {
+        btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CustCartModel ccm=new CustCartModel(artModel.getStrArtWorkImage(),
-                        artModel.getStrArtWorkFrameSize(),
-                        artModel.getArtWorkPrice());
-
-                appDatabase.custCartDao().insertCustCartModel(ccm);
-                Toast.makeText(ArtworkHomeDetailsActivity.this, "Added To Cart", Toast.LENGTH_SHORT).show();
+             Intent i=new Intent(ArtworkHomeDetailsActivity.this,CustPlaceOrderActivity.class);
+             i.putExtra("artmodel",artModel);
+             startActivity(i);
             }
         });
 
