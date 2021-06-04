@@ -1,24 +1,18 @@
 package com.example.hopeart.DataModel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArtistArtworkOrderModel {
-    String artworkId;
+
     String artistId;
     String artworktype;
     String artworkimg;
-    String imgHomeMenuImage;
     String artworkFrameSize;
     float artworkPrice;
+    String artworkOrderStatus;
     String artworkPaperType;
 
-
-
-    public void setArtworkId(String artworkId) {
-        this.artworkId = artworkId;
-    }
-
-    public String getArtworkId() {
-        return artworkId;
-    }
 
     public String getArtistId() {
         return artistId;
@@ -44,17 +38,36 @@ public class ArtistArtworkOrderModel {
         return artworkPaperType;
     }
 
+    public String getArtworkOrderStatus() {
+        return artworkOrderStatus;
+    }
 
 
-    public ArtistArtworkOrderModel(String artworkId, String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType) {
-        this.artworkId = artworkId;
+
+    public ArtistArtworkOrderModel(String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType,String artworkOrderStatus) {
+
         this.artistId = artistId;
         this.artworktype = artworktype;
         this.artworkimg = artworkimg;
         this.artworkFrameSize = artworkFrameSize;
         this.artworkPrice = artworkPrice;
         this.artworkPaperType = artworkPaperType;
+        this.artworkOrderStatus=artworkOrderStatus;
 
+    }
+
+    public Map<String,Object> toMap() {
+        HashMap<String, Object> mapobj1 = new HashMap<>();
+
+        mapobj1.put("artistId", this.artistId);
+        mapobj1.put("artworktype", this.artworktype);
+        mapobj1.put("artworkimg", this.artworkimg);
+        mapobj1.put("artworkFrameSize", this.artworkFrameSize);
+        mapobj1.put("artworkPrice", this.artworkPrice);
+        mapobj1.put("artworkPaperType", this.artworkPaperType);
+        mapobj1.put("artworkOrderStatus", this.artworkOrderStatus);
+
+        return mapobj1;
     }
 }
 
