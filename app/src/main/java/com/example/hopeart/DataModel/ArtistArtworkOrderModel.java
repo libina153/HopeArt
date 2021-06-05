@@ -1,9 +1,12 @@
 package com.example.hopeart.DataModel;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArtistArtworkOrderModel {
+public class ArtistArtworkOrderModel implements Serializable {
+
+    public ArtistArtworkOrderModel(){}
 
     String artistId;
     String artworktype;
@@ -13,6 +16,9 @@ public class ArtistArtworkOrderModel {
     String artworkOrderStatus;
     String artworkPaperType;
 
+    public void setArtistId(String artistId) {
+        this.artistId = artistId;
+    }
 
     public String getArtistId() {
         return artistId;

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ArtistArtworkDetailActivity;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
@@ -29,6 +30,11 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
     public ArtistArtworkOrderAdaptar(List<ArtistArtworkOrderModel> artworklist, Context ctx) {
         this.artworklist = artworklist;
         this.ctx = ctx;
+    }
+
+    public void setArtworklist(List<ArtistArtworkOrderModel> artworklist) {
+        this.artworklist = artworklist;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -53,6 +59,9 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
 
             }
         });
+        Glide.with(ctx)
+                .load(artworkorder.getArtworkimg())
+                .into(holder.imgArtworkImage);
 
     }
 

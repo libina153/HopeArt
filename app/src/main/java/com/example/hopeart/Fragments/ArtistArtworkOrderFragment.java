@@ -1,31 +1,53 @@
 package com.example.hopeart.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
+import com.example.hopeart.Adaptar.ArtistCustomizeOrderAdaptar;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
+import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArtistArtworkOrderFragment extends Fragment{
     Context ctx;
+    FirebaseFirestore DB;
+    List<ArtistArtworkOrderModel> artworklist=null;
+    ArtistArtworkOrderAdaptar artworkadapter=null;
+
+    TextView txtArtworkSelectOrderStatus;
+
+    String strArtworkSelectOrderStatus;
+
+    String[] ArtworkSelectOrderStatus = {"Approved", "Pending","Cancel"};
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         ctx=context;
+        DB=FirebaseFirestore.getInstance();
     }
 
     @Nullable
@@ -42,14 +64,83 @@ public class ArtistArtworkOrderFragment extends Fragment{
 
         RecyclerView rvartworkOrder=view.findViewById(R.id.artworkRecycleviewer);
 
+        txtArtworkSelectOrderStatus=view.findViewById(R.id.txtArtworkSelectOrderStatus);
 
+        txtArtworkSelectOrderStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+                builder.setTitle("Select Artwork Order Status")
+                        .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setSingleChoiceItems(ArtworkSelectOrderStatus, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position) {
+                                txtArtworkSelectOrderStatus.setText(ArtworkSelectOrderStatus[position]);
+                                strArtworkSelectOrderStatus= (ArtworkSelectOrderStatus[position]);
 
-        List<ArtistArtworkOrderModel> artworklist=new ArrayList<>();
+                                artworklist.clear();
+                                DB.collection("ArtworkOrderData")
+                                        .whereEqualTo("artworkOrderStatus",strArtworkSelectOrderStatus)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                artworklist=new ArrayList<>();
+                                                if (task.isSuccessful()){
+                                                    for (DocumentSnapshot doc : task.getResult()){
+                                                        ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
+                                                        artworkModel.setArtistId(doc.getId());
+                                                        artworklist.add(artworkModel);
+                                                    }
+                                                    artworkadapter.setArtworklist(artworklist);
+                                                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
 
+                                    }
+                                });
 
-        ArtistArtworkOrderAdaptar artworkadapter=new ArtistArtworkOrderAdaptar(artworklist,ctx);
-        rvartworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
-        rvartworkOrder.setAdapter(artworkadapter);
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .setIcon(R.drawable.ic_launcher_background)
+                        .setCancelable(false);
+                builder.create().show();
+            }
+        });
+        DB.collection("ArtworkOrderData")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        artworklist=new ArrayList<>();
+                        if (task.isSuccessful()){
+                            for (DocumentSnapshot doc : task.getResult()){
+                                ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
+                                artworkModel.setArtistId(doc.getId());
+                                artworklist.add(artworkModel);
+                            }
+                            List<ArtistArtworkOrderModel> artworklist=new ArrayList<>();
+
+                            artworkadapter=new ArtistArtworkOrderAdaptar(artworklist,ctx);
+                            rvartworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
+                            rvartworkOrder.setAdapter(artworkadapter);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 }
