@@ -1,5 +1,6 @@
 package com.example.hopeart.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,15 +11,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
-import com.example.hopeart.Adaptar.ArtistCustomizeOrderAdaptar;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
-import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -82,19 +80,20 @@ public class ArtistArtworkOrderFragment extends Fragment{
                             @Override
                             public void onClick(DialogInterface dialogInterface, int position) {
                                 txtArtworkSelectOrderStatus.setText(ArtworkSelectOrderStatus[position]);
-                                strArtworkSelectOrderStatus= (ArtworkSelectOrderStatus[position]);
+                                strArtworkSelectOrderStatus = (ArtworkSelectOrderStatus[position]);
 
                                 artworklist.clear();
+
                                 DB.collection("ArtworkOrderData")
-                                        .whereEqualTo("artworkOrderStatus",strArtworkSelectOrderStatus)
+                                        .whereEqualTo("artworkOrderStatus", strArtworkSelectOrderStatus)
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                artworklist=new ArrayList<>();
-                                                if (task.isSuccessful()){
-                                                    for (DocumentSnapshot doc : task.getResult()){
-                                                        ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
+                                                artworklist = new ArrayList<>();
+                                                if (task.isSuccessful()) {
+                                                    for (DocumentSnapshot doc : task.getResult()) {
+                                                        ArtistArtworkOrderModel artworkModel = doc.toObject(ArtistArtworkOrderModel.class);
                                                         artworkModel.setArtistId(doc.getId());
                                                         artworklist.add(artworkModel);
                                                     }
@@ -107,7 +106,6 @@ public class ArtistArtworkOrderFragment extends Fragment{
 
                                     }
                                 });
-
                                 dialogInterface.dismiss();
                             }
                         })
@@ -144,4 +142,7 @@ public class ArtistArtworkOrderFragment extends Fragment{
 
     }
 }
+
+
+
 

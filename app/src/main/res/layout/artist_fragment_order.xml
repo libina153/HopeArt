@@ -20,11 +20,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewpager_id"
+        android:id="@+id/frahContainer"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-    </androidx.viewpager.widget.ViewPager>
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
-import com.example.hopeart.DataModel.UserProfileModel;
+
 import com.example.hopeart.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +35,6 @@ public class CustPlaceOrderActivity extends AppCompatActivity {
     String artworkFrameSize;
     float artworkPrice;
     String artworkPaperType;
-
 
     StorageReference rootReference;
     FirebaseFirestore firebaseDB;
@@ -78,7 +77,6 @@ public class CustPlaceOrderActivity extends AppCompatActivity {
                 artworkPaperType=artModel.getStrArtWorkPaperType();
                 artworkPrice=artModel.getArtWorkPrice();
                 artworkimg=artModel.getStrArtWorkImage();
-
 
                 ArtistArtworkOrderModel st=new ArtistArtworkOrderModel(artistId,artworktype,artworkimg,artworkFrameSize,artworkPrice,artworkPaperType,"Pending");
 
