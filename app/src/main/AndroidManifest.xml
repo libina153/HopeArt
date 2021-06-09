@@ -22,10 +22,7 @@
         <activity
             android:name=".Activity.ActivitySplash"
             android:theme="@style/Theme.HopeArt.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity
@@ -58,6 +55,10 @@
         android:name=".Activity.CustHomeDrawer"
         android:label="@string/title_activity_cust_drawer"
         android:theme="@style/Theme.HopeArt.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
     </activity>
 
@@ -70,7 +71,14 @@
 
         <activity android:name=".Activity.CustPlaceOrderActivity"
             android:theme="@style/Theme.HopeArt">
+        </activity>
 
+        <activity android:name=".Activity.CustArtworkOrderDetailActivity"
+            android:theme="@style/Theme.HopeArt">
+        </activity>
+
+        <activity android:name=".Activity.CustCustomizeOrderDetailActivity"
+            android:theme="@style/Theme.HopeArt">
         </activity>
 
     </application>

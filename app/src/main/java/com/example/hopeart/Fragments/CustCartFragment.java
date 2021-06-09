@@ -13,13 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hopeart.Activity.ActivityLogIn;
-import com.example.hopeart.Activity.ActivityRegistration;
 import com.example.hopeart.Activity.CustPlaceOrderActivity;
-import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
 import com.example.hopeart.Adaptar.CustCartAdapter;
-import com.example.hopeart.Adaptar.CustOrderAdapter;
-import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
 import com.example.hopeart.DataModel.CustCartModel;
 import com.example.hopeart.R;
 import com.example.hopeart.Utility.AppDatabase;

@@ -4,15 +4,21 @@
         android:id="@+id/cust_homemenu"
         android:title="Home"
         android:icon="@drawable/ic_home_icon"/>
-
-    <item
-        android:id="@+id/cust_ordermenu"
-        android:title="Order"
-        android:icon="@drawable/ic_order_icon"/>
     <item
         android:id="@+id/cust_profilemenu"
         android:title="Profile"
         android:icon="@drawable/ic_profile_icon"/>
+
+    <item
+        android:id="@+id/cust_artworkordermenu"
+        android:title="ArtworkOrder"
+        android:icon="@drawable/ic_order_icon"/>
+
+    <item
+        android:id="@+id/cust_customordermenu"
+        android:title="CustomizeOrder"
+        android:icon="@drawable/ic_order_icon"/>
+
     <item
         android:id="@+id/cust_wishlistmenu"
         android:title="Wishlist"
