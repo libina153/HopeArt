@@ -5,7 +5,6 @@
     android:background="#B38FF4"
     android:orientation="vertical">
 
-
     <EditText
         android:id="@+id/edtRegEmail"
         android:layout_width="match_parent"
@@ -76,6 +75,5 @@
         android:textColor="#040303"
         android:text="Already have an account ? LogIn "
         android:textSize="18sp" />
-
 
 </LinearLayout>

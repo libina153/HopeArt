@@ -24,7 +24,7 @@ public class ActivityLogIn extends AppCompatActivity {
     EditText edtLoginEmail,edtLoginPass;
     FloatingActionButton btnLogin;
     FirebaseAuth mAuth;
-    TextView txtloginReg;
+    TextView txtloginReg,txtloginForgotPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,16 @@ public class ActivityLogIn extends AppCompatActivity {
 
         edtLoginEmail=findViewById(R.id.edtloginEmail);
         edtLoginPass=findViewById(R.id.edtloginPass);
-
         txtloginReg=findViewById(R.id.txtloginReg);
+        txtloginForgotPass=findViewById(R.id.txtloginForgotPass);
+
+        txtloginForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent forgPassIntent=new Intent(ActivityLogIn.this,ActivityForgetPass.class);
+                startActivity(forgPassIntent);
+            }
+        });
         txtloginReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
