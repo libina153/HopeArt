@@ -50,12 +50,15 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
         holder.txtArtPrice.setText(String.valueOf(artworkorder.getArtworkPrice()));
         holder.txtFrameSize.setText(artworkorder.getArtworkFrameSize());
         holder.txtArtworkType.setText(artworkorder.getArtworktype());
+        holder.txtArtworkDate.setText(artworkorder.getArtworkOrderDate());
 
         holder.btnartworkdetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent artdetail=new Intent(ctx, ArtistArtworkDetailActivity.class);
+                artdetail.putExtra("artworkModel",artworkorder);
                 ctx.startActivity(artdetail);
+
 
             }
         });
@@ -71,7 +74,7 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder{
-        TextView txtArtworkType,txtFrameSize,txtArtPrice;
+        TextView txtArtworkType,txtFrameSize,txtArtPrice,txtArtworkDate;
         ImageView imgArtworkImage;
         Button btnartworkdetail;
 
@@ -82,6 +85,7 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
             this.imgArtworkImage=itemView.findViewById(R.id.imgartworkImage);
             this.txtFrameSize=itemView.findViewById(R.id.txtartworkFrameSize);
             this.txtArtPrice=itemView.findViewById(R.id.txtartworkPrice);
+            this.txtArtworkDate=itemView.findViewById(R.id.txtArtworkOrderDate);
             this.btnartworkdetail=itemView.findViewById(R.id.btnartistdetail);
 
         }

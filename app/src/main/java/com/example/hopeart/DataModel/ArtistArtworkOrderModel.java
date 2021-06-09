@@ -15,6 +15,7 @@ public class ArtistArtworkOrderModel implements Serializable {
     float artworkPrice;
     String artworkOrderStatus;
     String artworkPaperType;
+    String artworkOrderDate;
 
     public void setArtistId(String artistId) {
         this.artistId = artistId;
@@ -48,9 +49,13 @@ public class ArtistArtworkOrderModel implements Serializable {
         return artworkOrderStatus;
     }
 
+    public String getArtworkOrderDate() {
+        return artworkOrderDate;
+    }
 
 
-    public ArtistArtworkOrderModel(String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType,String artworkOrderStatus) {
+
+    public ArtistArtworkOrderModel(String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType,String artworkOrderStatus,String artworkOrderDate) {
 
         this.artistId = artistId;
         this.artworktype = artworktype;
@@ -59,6 +64,7 @@ public class ArtistArtworkOrderModel implements Serializable {
         this.artworkPrice = artworkPrice;
         this.artworkPaperType = artworkPaperType;
         this.artworkOrderStatus=artworkOrderStatus;
+        this.artworkOrderDate=getArtworkOrderDate();
 
     }
 
@@ -66,12 +72,13 @@ public class ArtistArtworkOrderModel implements Serializable {
         HashMap<String, Object> mapobj1 = new HashMap<>();
 
         mapobj1.put("artistId", this.artistId);
-        mapobj1.put("artworktype", this.artworktype);
-        mapobj1.put("artworkimg", this.artworkimg);
+        mapobj1.put("artworkType", this.artworktype);
+        mapobj1.put("artworkImg","");
         mapobj1.put("artworkFrameSize", this.artworkFrameSize);
         mapobj1.put("artworkPrice", this.artworkPrice);
         mapobj1.put("artworkPaperType", this.artworkPaperType);
         mapobj1.put("artworkOrderStatus", this.artworkOrderStatus);
+        mapobj1.put("artworkOrderDate", this.artworkOrderDate);
 
         return mapobj1;
     }

@@ -16,6 +16,7 @@ import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
 
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.UtilityMethods;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -78,7 +79,7 @@ public class CustPlaceOrderActivity extends AppCompatActivity {
                 artworkPrice=artModel.getArtWorkPrice();
                 artworkimg=artModel.getStrArtWorkImage();
 
-                ArtistArtworkOrderModel st=new ArtistArtworkOrderModel(artistId,artworktype,artworkimg,artworkFrameSize,artworkPrice,artworkPaperType,"Pending");
+                ArtistArtworkOrderModel st=new ArtistArtworkOrderModel(artistId,artworktype,artworkimg,artworkFrameSize,artworkPrice,artworkPaperType,"Pending", UtilityMethods.getDateAndTime());
 
                 Map<String,Object> data=st.toMap();
 

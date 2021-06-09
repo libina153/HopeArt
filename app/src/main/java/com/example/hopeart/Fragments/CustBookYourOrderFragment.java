@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.UtilityMethods;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -176,7 +177,8 @@ public class CustBookYourOrderFragment extends Fragment {
             public void onClick(View view) {
 
                 ArtistCustomizeOrderModel om = new ArtistCustomizeOrderModel
-                        ("1","2",strArtworkType,strFrameSize,strPaperType,"Pending","15/05/2021");
+                        ("1","2",strArtworkType,strFrameSize,strPaperType,"Pending",
+                                UtilityMethods.getDateAndTime());
 
                 Map<String, Object> data= om.toMap();
 
