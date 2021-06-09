@@ -57,7 +57,7 @@ public class ArtistArtWorkModel implements Serializable
         mapobj1.put("strArtWorkType", this.strArtWorkType);
         mapobj1.put("strArtWorkFrameSize", this.strArtWorkFrameSize);
         mapobj1.put("strArtWorkPaperType", this.strArtWorkPaperType);
-        mapobj1.put("strArtWorkImage", this.strArtWorkImage);
+        mapobj1.put("strArtWorkImage","");
         mapobj1.put("artWorkPrice", this.artWorkPrice);
 
         return mapobj1;

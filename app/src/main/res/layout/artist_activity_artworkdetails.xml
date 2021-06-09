@@ -3,10 +3,76 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/imgArtworkDetails"
+        android:layout_gravity="center"
+        android:src="@drawable/splash_activity_image"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="258dp"
-        android:gravity="center"
-        android:text="Artwork Details" />
+        android:layout_height="wrap_content"
+        android:text="Artwork Type"
+        android:id="@+id/txtArtworkDetailsArtworkType"
+        android:textSize="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paper Type"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtArtworkDetailsPaperType"
+        android:textSize="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Frame Size"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtArtworkDetailsFrameSize"
+        android:textSize="25dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take Action"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtArtworkDetailsTakeAction"
+        android:textSize="25dp"
+        />
+    <RadioGroup
+        android:id="@+id/radiobtnArtworkDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#040303"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radiobtn_artworkApproved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Approved"
+            android:textSize="20dp"/>
+
+        <RadioButton
+            android:id="@+id/radiobtn_artworkCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="20dp"
+            android:text="Cancel" />
+    </RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnArtworkProceed"
+        android:text="Proceed"
+        android:layout_gravity="center"
+        android:textSize="20dp"/>
+
 
 </LinearLayout>
