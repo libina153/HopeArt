@@ -96,7 +96,7 @@ public class CustArtworkOrderFragment extends Fragment {
                                                 if (task.isSuccessful()) {
                                                     for (DocumentSnapshot doc : task.getResult()) {
                                                         ArtistArtworkOrderModel artworkModel = doc.toObject(ArtistArtworkOrderModel.class);
-                                                        artworkModel.setArtistId(doc.getId());
+                                                        artworkModel.setOrderId(doc.getId());
                                                         custartworklist.add(artworkModel);
                                                     }
                                                     cuartworkadapter.setArtworklist(custartworklist);
@@ -127,7 +127,7 @@ public class CustArtworkOrderFragment extends Fragment {
                         if (task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult()){
                                 ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
-                                artworkModel.setArtistId(doc.getId());
+                                artworkModel.setOrderId(doc.getId());
                                 custartworklist.add(artworkModel);
                             }
                             List<ArtistArtworkOrderModel> custartworklist=new ArrayList<>();

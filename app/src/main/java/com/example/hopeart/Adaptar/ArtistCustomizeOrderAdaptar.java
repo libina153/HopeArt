@@ -76,19 +76,14 @@ public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCust
         ImageView imgCustomImage;
         Button btncustomDetails;
 
-
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-
             this.txtCustomType = itemView.findViewById(R.id.txtcustomType);
             this.imgCustomImage = itemView.findViewById(R.id.imgcustomPhoto);
             this.txtCustomFrameSize = itemView.findViewById(R.id.txtcustomFrameSize);
             this.txtCustomOrderDt = itemView.findViewById(R.id.txtcustomOrderDate);
-
             this.btncustomDetails=itemView.findViewById(R.id.btncustomDetails);
         }
-
     }
-
-    }
+}
 

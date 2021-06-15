@@ -15,7 +15,7 @@
 
             <ImageView
                 android:id="@+id/artwork_img"
-                android:layout_width="184dp"
+                android:layout_width="210dp"
                 android:layout_height="202dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"

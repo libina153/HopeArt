@@ -52,7 +52,7 @@ public class CustCustomizeOrderAdapter extends RecyclerView.Adapter<CustCustomiz
             @Override
             public void onClick(View view) {
                 Intent cudetail=new Intent(ctx, CustCustomizeOrderDetailActivity.class);
-                cudetail.putExtra("model",cucustomorder);
+                cudetail.putExtra("custmizeOrderModel",cucustomorder);
                 ctx.startActivity(cudetail);
 
             }

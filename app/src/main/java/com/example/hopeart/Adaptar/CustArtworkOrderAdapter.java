@@ -54,6 +54,7 @@ public class CustArtworkOrderAdapter extends RecyclerView.Adapter<CustArtworkOrd
             @Override
             public void onClick(View view) {
                 Intent artdetail=new Intent(ctx, CustArtworkOrderDetailActivity.class);
+                artdetail.putExtra("custArtworkOrderModel",custorder);
                 ctx.startActivity(artdetail);
 
             }

@@ -11,19 +11,23 @@ public class ArtistCustomizeOrderModel implements Serializable
         String customid;
         String artistId;
         String customerId;
-        String customerType;
+        String customType;
         String customPhoto;
         String customFrameSize;
         String customPaperType;
+        float customPrice;
         String customOrderStatus;
         String customOrderDate;
 
-    public ArtistCustomizeOrderModel(String artistId, String customerId, String customerType, String customFrameSize, String customPaperType, String customOrderStatus, String customOrderDate) {
+    public ArtistCustomizeOrderModel(String customid, String artistId, String customerId, String customType, String customPhoto, String customFrameSize, String customPaperType, float customPrice, String customOrderStatus, String customOrderDate) {
+        this.customid = customid;
         this.artistId = artistId;
         this.customerId = customerId;
-        this.customerType = customerType;
+        this.customType = customType;
+        this.customPhoto = customPhoto;
         this.customFrameSize = customFrameSize;
         this.customPaperType = customPaperType;
+        this.customPrice = customPrice;
         this.customOrderStatus = customOrderStatus;
         this.customOrderDate = customOrderDate;
     }
@@ -45,7 +49,7 @@ public class ArtistCustomizeOrderModel implements Serializable
         }
 
         public String getCustomerType () {
-            return customerType;
+            return customType;
         }
 
         public String getCustomPhoto () {
@@ -56,7 +60,9 @@ public class ArtistCustomizeOrderModel implements Serializable
             return customFrameSize;
         }
 
-        public String getCustomPaperType () {
+    public float getCustomPrice() { return customPrice; }
+
+    public String getCustomPaperType () {
             return customPaperType;
         }
 
@@ -69,19 +75,16 @@ public class ArtistCustomizeOrderModel implements Serializable
         }
 
 
-
-
-
     public Map<String,Object> toMap() {
         HashMap<String,Object> mapobj1 = new HashMap<>();
 
-        mapobj1.put("customPhoto","");
+        mapobj1.put("customPhoto",this.customPhoto);
         mapobj1.put("customFrameSize",this.customFrameSize);
         mapobj1.put("customPaperType",this.customPaperType);
         mapobj1.put("customOrderStatus",this.customOrderStatus);
         mapobj1.put("customOrderDate",this.customOrderDate);
-        mapobj1.put("customerType",this.customerType);
-
+        mapobj1.put("customType",this.customType);
+        mapobj1.put("customPrice",this.customPrice);
         mapobj1.put("artistId",this.artistId);
         mapobj1.put("customerId",this.customerId);
 

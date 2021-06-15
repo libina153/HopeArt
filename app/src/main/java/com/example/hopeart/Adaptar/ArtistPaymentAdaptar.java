@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
 import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.DataModel.ArtistPaymentModel;
@@ -41,9 +42,13 @@ public class ArtistPaymentAdaptar extends RecyclerView.Adapter<ArtistPaymentAdap
         ArtistPaymentModel paymentorder=paymentlist.get(position);
 
         holder.txtPaymentMode.setText(paymentorder.getPaymentMode());
-        holder.txtPaymentAmt.setText(paymentorder.getPaymentAmount());
+        holder.txtPaymentAmt.setText(String.valueOf(paymentorder.getPaymentAmount()));
         holder.txtPaymentDate.setText(paymentorder.getPaymentDate());
         holder.txtPaymentStatus.setText(paymentorder.getPaymentStatus());
+
+        Glide.with(ctx)
+                .load(paymentorder.getPaymentimg())
+                .into(holder.imgartworkImage);
     }
 
     @Override
@@ -53,6 +58,7 @@ public class ArtistPaymentAdaptar extends RecyclerView.Adapter<ArtistPaymentAdap
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView txtPaymentMode,txtPaymentAmt,txtPaymentStatus,txtPaymentDate;
+        ImageView imgartworkImage;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,10 +67,10 @@ public class ArtistPaymentAdaptar extends RecyclerView.Adapter<ArtistPaymentAdap
             this.txtPaymentAmt = itemView.findViewById(R.id.txtPaymentAmt);
             this.txtPaymentDate = itemView.findViewById(R.id.txtPaymentDate);
             this.txtPaymentStatus=itemView.findViewById(R.id.txtPaymentStatus);
+            this.imgartworkImage=itemView.findViewById(R.id.imgartworkImage);
+
         }
-
     }
-
 }
 
 

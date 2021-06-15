@@ -58,8 +58,6 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
                 Intent artdetail=new Intent(ctx, ArtistArtworkDetailActivity.class);
                 artdetail.putExtra("artworkModel",artworkorder);
                 ctx.startActivity(artdetail);
-
-
             }
         });
         Glide.with(ctx)
@@ -87,7 +85,6 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
             this.txtArtPrice=itemView.findViewById(R.id.txtartworkPrice);
             this.txtArtworkDate=itemView.findViewById(R.id.txtArtworkOrderDate);
             this.btnartworkdetail=itemView.findViewById(R.id.btnartistdetail);
-
         }
     }
 }

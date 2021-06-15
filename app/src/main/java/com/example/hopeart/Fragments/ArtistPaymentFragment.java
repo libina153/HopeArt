@@ -15,14 +15,19 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hopeart.Activity.ActivityLogIn;
-import com.example.hopeart.Activity.ActivityRegistration;
-import com.example.hopeart.Activity.CustHomeDrawer;
-import com.example.hopeart.Adaptar.ArtistHomeAdaptar;
+import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
+import com.example.hopeart.Adaptar.ArtistCustomizeOrderAdaptar;
 import com.example.hopeart.Adaptar.ArtistPaymentAdaptar;
-import com.example.hopeart.DataModel.ArtistArtWorkModel;
+import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
+import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.DataModel.ArtistPaymentModel;
 import com.example.hopeart.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +36,16 @@ import java.util.List;
 public class ArtistPaymentFragment extends Fragment {
 
     Context ctx;
+    FirebaseFirestore DB;
+    List<ArtistPaymentModel> paymentlist=null;
+    ArtistPaymentAdaptar paymentadapter=null;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         ctx=context;
+        DB=FirebaseFirestore.getInstance();
     }
-
 
     @Nullable
     @Override
@@ -53,24 +61,29 @@ public class ArtistPaymentFragment extends Fragment {
 
             RecyclerView rvpayment = view.findViewById(R.id.paymentRecycleviewer);
 
-            ArtistPaymentModel a = new ArtistPaymentModel("1","1","1","Paymode","200","1","Status","02-03-2021");
-            ArtistPaymentModel a1 = new ArtistPaymentModel("2","2","2","Paymode","200","1","Status","02-03-2021");
-
-
-            List<ArtistPaymentModel> paymentlist = new ArrayList<>();
-
-            paymentlist.add(a);
-            paymentlist.add(a1);
-
-
-
-            ArtistPaymentAdaptar paymentAdaptar = new ArtistPaymentAdaptar(paymentlist, ctx);
-            rvpayment.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
-            rvpayment.setAdapter(paymentAdaptar);
-
-
+            DB.collection("PaymentData")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            paymentlist=new ArrayList<>();
+                            if (task.isSuccessful()){
+                                for (DocumentSnapshot doc : task.getResult()){
+                                    ArtistPaymentModel orderModel=doc.toObject(ArtistPaymentModel.class);
+                                    orderModel.setPaymentId(doc.getId());
+                                    paymentlist.add(orderModel);
+                                }
+                                paymentadapter=new ArtistPaymentAdaptar(paymentlist,ctx);
+                                rvpayment.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
+                                rvpayment.setAdapter(paymentadapter);
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
 
         }
-
     }
 }

@@ -16,6 +16,9 @@ public class ArtistArtworkOrderModel implements Serializable {
     String artworkOrderStatus;
     String artworkPaperType;
     String artworkOrderDate;
+    String orderId;
+
+
 
     public void setArtistId(String artistId) {
         this.artistId = artistId;
@@ -25,13 +28,9 @@ public class ArtistArtworkOrderModel implements Serializable {
         return artistId;
     }
 
-    public String getArtworktype() {
-        return artworktype;
-    }
+    public String getArtworktype() { return artworktype; }
 
-    public String getArtworkimg() {
-        return artworkimg;
-    }
+    public String getArtworkimg() { return artworkimg; }
 
     public String getArtworkFrameSize() {
         return artworkFrameSize;
@@ -53,9 +52,15 @@ public class ArtistArtworkOrderModel implements Serializable {
         return artworkOrderDate;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
 
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
-    public ArtistArtworkOrderModel(String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType,String artworkOrderStatus,String artworkOrderDate) {
+    public ArtistArtworkOrderModel(String artistId, String artworktype, String artworkimg, String artworkFrameSize, float artworkPrice, String artworkPaperType, String artworkOrderStatus, String artworkOrderDate) {
 
         this.artistId = artistId;
         this.artworktype = artworktype;
@@ -73,12 +78,13 @@ public class ArtistArtworkOrderModel implements Serializable {
 
         mapobj1.put("artistId", this.artistId);
         mapobj1.put("artworkType", this.artworktype);
-        mapobj1.put("artworkImg","");
+        mapobj1.put("artworkimg",this.artworkimg);
         mapobj1.put("artworkFrameSize", this.artworkFrameSize);
         mapobj1.put("artworkPrice", this.artworkPrice);
         mapobj1.put("artworkPaperType", this.artworkPaperType);
         mapobj1.put("artworkOrderStatus", this.artworkOrderStatus);
         mapobj1.put("artworkOrderDate", this.artworkOrderDate);
+        mapobj1.put("orderid", this.orderId);
 
         return mapobj1;
     }

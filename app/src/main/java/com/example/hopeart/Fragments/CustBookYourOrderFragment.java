@@ -46,7 +46,12 @@ import static android.content.Context.CAMERA_SERVICE;
 public class CustBookYourOrderFragment extends Fragment {
     Context ctx;
 
-    String strFrameSize, strPaperType, strArtworkType;
+    String strFrameSize;
+    String strPaperType;
+    String strArtworkType;
+
+    String customPhoto;
+   float customPrice;
 
     String[] CustArtworkType = {"Sketching", "Painting"};
     String[] CustFrameSize = {"4*6", "5*7", "6*8", "5*8", "8*8"};
@@ -176,9 +181,8 @@ public class CustBookYourOrderFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                ArtistCustomizeOrderModel om = new ArtistCustomizeOrderModel
-                        ("1","2",strArtworkType,strFrameSize,strPaperType,"Pending",
-                                UtilityMethods.getDateAndTime());
+                ArtistCustomizeOrderModel om = new ArtistCustomizeOrderModel("1","2","1",strArtworkType,customPhoto,strFrameSize,strPaperType,customPrice,"Pending", UtilityMethods.getDateAndTime());
+
 
                 Map<String, Object> data= om.toMap();
 
@@ -199,6 +203,7 @@ public class CustBookYourOrderFragment extends Fragment {
                 });
             }
         });
+
         txtCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -214,7 +219,6 @@ public class CustBookYourOrderFragment extends Fragment {
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
-
 
         txtGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,7 +289,7 @@ public class CustBookYourOrderFragment extends Fragment {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                progressDialog.setMessage("Uploaded" + (int) progress + "%");
+                progressDialog.setMessage("Uploaded" +" "+ (int) progress + "%");
             }
         });
     }

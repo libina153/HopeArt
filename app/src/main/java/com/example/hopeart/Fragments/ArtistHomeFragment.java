@@ -65,14 +65,13 @@ public class ArtistHomeFragment extends Fragment {
                                 artworklist.add(artworkModel);
                             }
                             ArtistHomeAdaptar homeAdaptar=new ArtistHomeAdaptar(artworklist,ctx);
-                            rvartworkHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,true));
+                            rvartworkHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,false));
                             rvartworkHomeOrder.setAdapter(homeAdaptar);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
             }
         });
     }
