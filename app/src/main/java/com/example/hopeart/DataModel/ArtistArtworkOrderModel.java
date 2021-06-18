@@ -73,7 +73,7 @@ public class ArtistArtworkOrderModel implements Serializable {
 
         mapobj1.put("artistId", this.artistId);
         mapobj1.put("artworkType", this.artworktype);
-        mapobj1.put("artworkImg","");
+        mapobj1.put("artworkImg",this.artworkimg);
         mapobj1.put("artworkFrameSize", this.artworkFrameSize);
         mapobj1.put("artworkPrice", this.artworkPrice);
         mapobj1.put("artworkPaperType", this.artworkPaperType);
