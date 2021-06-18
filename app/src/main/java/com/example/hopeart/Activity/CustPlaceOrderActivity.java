@@ -79,7 +79,9 @@ public class CustPlaceOrderActivity extends AppCompatActivity {
                 artworkPrice=artModel.getArtWorkPrice();
                 artworkimg=artModel.getStrArtWorkImage();
 
-                ArtistArtworkOrderModel st=new ArtistArtworkOrderModel(artistId,artworktype,artworkimg,artworkFrameSize,artworkPrice,artworkPaperType,"Pending", UtilityMethods.getDateAndTime());
+                ArtistArtworkOrderModel st=new
+                        ArtistArtworkOrderModel(artistId,artworktype,
+                        artworkimg,artworkFrameSize,artworkPrice,artworkPaperType,"Pending", UtilityMethods.getDateAndTime());
 
                 Map<String,Object> data=st.toMap();
 

@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
+import com.example.hopeart.Adaptar.CustArtworkOrderAdapter;
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
+import com.example.hopeart.DataModel.CustOrderModel;
 import com.example.hopeart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,18 +30,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtistArtworkOrderFragment extends Fragment{
+public class CustArtworkOrderFragment extends Fragment {
+
     Context ctx;
     FirebaseFirestore DB;
-    List<ArtistArtworkOrderModel> artworklist=null;
-    ArtistArtworkOrderAdaptar artworkadapter=null;
+    List<ArtistArtworkOrderModel> custartworklist=null;
+     CustArtworkOrderAdapter cuartworkadapter=null;
+
 
     TextView txtArtworkSelectOrderStatus;
 
     String strArtworkSelectOrderStatus;
 
     String[] ArtworkSelectOrderStatus = {"Approved", "Pending","Cancel"};
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -52,22 +55,21 @@ public class ArtistArtworkOrderFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         boolean attachToRoot;
-        return inflater.inflate(R.layout.artist_fragment_artworkorder,container,attachToRoot=false);
+        return inflater.inflate(R.layout.cust_fragment_artworkorder, container, attachToRoot = false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        RecyclerView rvcustArtworkOrder=view.findViewById(R.id.custOrderRecycleviewer);
 
-        RecyclerView rvartworkOrder=view.findViewById(R.id.artworkRecycleviewer);
 
         txtArtworkSelectOrderStatus=view.findViewById(R.id.txtArtworkSelectOrderStatus);
 
         txtArtworkSelectOrderStatus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
                 builder.setTitle("Select Artwork Order Status")
                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
@@ -82,7 +84,7 @@ public class ArtistArtworkOrderFragment extends Fragment{
                                 txtArtworkSelectOrderStatus.setText(ArtworkSelectOrderStatus[position]);
                                 strArtworkSelectOrderStatus = (ArtworkSelectOrderStatus[position]);
 
-                                artworklist.clear();
+                                custartworklist.clear();
 
                                 DB.collection("ArtworkOrderData")
                                         .whereEqualTo("artworkOrderStatus", strArtworkSelectOrderStatus)
@@ -90,14 +92,14 @@ public class ArtistArtworkOrderFragment extends Fragment{
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                artworklist = new ArrayList<>();
+                                                custartworklist = new ArrayList<>();
                                                 if (task.isSuccessful()) {
                                                     for (DocumentSnapshot doc : task.getResult()) {
                                                         ArtistArtworkOrderModel artworkModel = doc.toObject(ArtistArtworkOrderModel.class);
                                                         artworkModel.setOrderId(doc.getId());
-                                                        artworklist.add(artworkModel);
+                                                        custartworklist.add(artworkModel);
                                                     }
-                                                    artworkadapter.setArtworklist(artworklist);
+                                                    cuartworkadapter.setArtworklist(custartworklist);
                                                 }
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
@@ -112,35 +114,35 @@ public class ArtistArtworkOrderFragment extends Fragment{
                         .setIcon(R.drawable.ic_launcher_background)
                         .setCancelable(false);
                 builder.create().show();
+
             }
         });
+
         DB.collection("ArtworkOrderData")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        artworklist=new ArrayList<>();
+                        custartworklist=new ArrayList<>();
                         if (task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult()){
                                 ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
                                 artworkModel.setOrderId(doc.getId());
-                                artworklist.add(artworkModel);
+                                custartworklist.add(artworkModel);
                             }
-                            List<ArtistArtworkOrderModel> artworklist=new ArrayList<>();
+                            List<ArtistArtworkOrderModel> custartworklist=new ArrayList<>();
 
-                            artworkadapter=new ArtistArtworkOrderAdaptar(artworklist,ctx);
-                            rvartworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
-                            rvartworkOrder.setAdapter(artworkadapter);
+                            cuartworkadapter=new CustArtworkOrderAdapter(custartworklist,ctx);
+                            rvcustArtworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
+                            rvcustArtworkOrder.setAdapter(cuartworkadapter);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
             }
         });
+
     }
 }
-
-
-
-

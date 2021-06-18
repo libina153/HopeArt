@@ -13,62 +13,60 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.hopeart.Activity.ActivityLogIn;
-import com.example.hopeart.Activity.ActivitySplash;
 import com.example.hopeart.Activity.ArtistCustomDetailActivity;
-import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
+import com.example.hopeart.Activity.CustCustomizeOrderDetailActivity;
 import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.R;
 
 import java.util.List;
 
-public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCustomizeOrderAdaptar.ItemViewHolder>{
+public class CustCustomizeOrderAdapter extends RecyclerView.Adapter<CustCustomizeOrderAdapter.ItemViewHolder>{
 
-    List<ArtistCustomizeOrderModel> customlist;
+    List<ArtistCustomizeOrderModel> cucustomlist;
     Context ctx;
 
-    public ArtistCustomizeOrderAdaptar(List<ArtistCustomizeOrderModel> customlist, Context ctx) {
-        this.customlist = customlist;
+    public CustCustomizeOrderAdapter(List<ArtistCustomizeOrderModel> cucustomlist, Context ctx) {
+        this.cucustomlist = cucustomlist;
         this.ctx = ctx;
     }
 
-    public void setCustomlist(List<ArtistCustomizeOrderModel> customlist) {
-        this.customlist = customlist;
+    public void setCustomlist(List<ArtistCustomizeOrderModel> cucustomlist) {
+        this.cucustomlist = cucustomlist;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ArtistCustomizeOrderAdaptar.ItemViewHolder(LayoutInflater.from(ctx).inflate(R.layout.artist_adaptar_customizeorder,parent,false));
+    public CustCustomizeOrderAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new CustCustomizeOrderAdapter.ItemViewHolder(LayoutInflater.from(ctx).inflate(R.layout.cust_adapter_customizeorder,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        ArtistCustomizeOrderModel customorder=customlist.get(position);
+    public void onBindViewHolder(@NonNull CustCustomizeOrderAdapter.ItemViewHolder holder, int position) {
+        ArtistCustomizeOrderModel cucustomorder=cucustomlist.get(position);
 
-        holder.txtCustomOrderDt.setText(customorder.getCustomOrderDate());
-        holder.txtCustomType.setText(customorder.getCustomerType());
-        holder.txtCustomFrameSize.setText(customorder.getCustomFrameSize());
+        holder.txtCustomOrderDt.setText(cucustomorder.getCustomOrderDate());
+        holder.txtCustomType.setText(cucustomorder.getCustomerType());
+        holder.txtCustomFrameSize.setText(cucustomorder.getCustomFrameSize());
         holder.btncustomDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cudetail=new Intent(ctx, ArtistCustomDetailActivity.class);
-                cudetail.putExtra("model",customorder);
+                Intent cudetail=new Intent(ctx, CustCustomizeOrderDetailActivity.class);
+                cudetail.putExtra("custmizeOrderModel",cucustomorder);
                 ctx.startActivity(cudetail);
 
             }
         });
 
         Glide.with(ctx)
-                .load(customorder.getCustomPhoto())
+                .load(cucustomorder.getCustomPhoto())
                 .into(holder.imgCustomImage);
 
     }
 
     @Override
     public int getItemCount() {
-        return customlist.size();
+        return cucustomlist.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -76,14 +74,18 @@ public class ArtistCustomizeOrderAdaptar extends RecyclerView.Adapter<ArtistCust
         ImageView imgCustomImage;
         Button btncustomDetails;
 
+
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+
             this.txtCustomType = itemView.findViewById(R.id.txtcustomType);
             this.imgCustomImage = itemView.findViewById(R.id.imgcustomPhoto);
             this.txtCustomFrameSize = itemView.findViewById(R.id.txtcustomFrameSize);
             this.txtCustomOrderDt = itemView.findViewById(R.id.txtcustomOrderDate);
+
             this.btncustomDetails=itemView.findViewById(R.id.btncustomDetails);
         }
-    }
-}
 
+    }
+
+}

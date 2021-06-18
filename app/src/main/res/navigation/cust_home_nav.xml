@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cust_home_nav"
     app:startDestination="@+id/cust_homemenu">
+
     <fragment
         android:id="@+id/cust_homemenu"
         android:label="Home"
@@ -12,7 +13,7 @@
     <fragment
         android:id="@+id/cust_profilemenu"
         android:label="Profile"
-        tools:layout="@layout/cust_fragment_order"
+        tools:layout="@layout/cust_fragment_artworkorder"
         android:name="com.example.hopeart.Fragments.CustProfileFragment"/>
     <fragment
         android:id="@+id/cust_wishlistmenu"
@@ -25,10 +26,15 @@
         tools:layout="@layout/cust_fragment_bookyourorder"
         android:name="com.example.hopeart.Fragments.CustBookYourOrderFragment"/>
     <fragment
-        android:id="@+id/cust_ordermenu"
+        android:id="@+id/cust_artworkordermenu"
         android:label="order"
-        tools:layout="@layout/cust_fragment_order"
-        android:name="com.example.hopeart.Fragments.CustOrderFragment"/>
+        tools:layout="@layout/cust_fragment_artworkorder"
+        android:name="com.example.hopeart.Fragments.CustArtworkOrderFragment"/>
+    <fragment
+        android:id="@+id/cust_customordermenu"
+        android:label="order"
+        tools:layout="@layout/cust_fragment_customizeorder"
+        android:name="com.example.hopeart.Fragments.CustCustomizeOrderFrag"/>
     <fragment
         android:id="@+id/cust_cardmenu"
         android:label="Cart"

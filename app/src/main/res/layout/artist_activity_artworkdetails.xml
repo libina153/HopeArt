@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
         android:id="@+id/imgArtworkDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="165dp"
         android:layout_gravity="center"
-        android:src="@drawable/splash_activity_image"/>
+        android:layout_marginTop="10dp"
+        android:src="@drawable/splash_activity_image" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Artwork Type"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:id="@+id/txtArtworkDetailsArtworkType"
         android:textSize="25dp"
         />
@@ -22,16 +27,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Paper Type"
-        android:layout_marginTop="10dp"
         android:id="@+id/txtArtworkDetailsPaperType"
+        android:gravity="center"
         android:textSize="25dp"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Frame Size"
-        android:layout_marginTop="10dp"
         android:id="@+id/txtArtworkDetailsFrameSize"
+        android:gravity="center"
         android:textSize="25dp"
         />
 
@@ -39,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Take Action"
-        android:layout_marginTop="10dp"
         android:id="@+id/txtArtworkDetailsTakeAction"
+        android:gravity="center"
         android:textSize="25dp"
         />
     <RadioGroup
@@ -48,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="#040303"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <RadioButton
@@ -60,16 +65,17 @@
 
         <RadioButton
             android:id="@+id/radiobtn_artworkCancel"
-            android:layout_width="wrap_content"
+            android:layout_width="114dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:textSize="20dp"
-            android:text="Cancel" />
+            android:text="Cancel"
+            android:textSize="20dp" />
     </RadioGroup>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnArtworkProceed"
+        android:layout_marginTop="5dp"
         android:text="Proceed"
         android:layout_gravity="center"
         android:textSize="20dp"/>

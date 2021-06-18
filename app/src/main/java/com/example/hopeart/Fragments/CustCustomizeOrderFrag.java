@@ -1,6 +1,5 @@
 package com.example.hopeart.Fragments;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,12 +10,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hopeart.Adaptar.ArtistArtworkOrderAdaptar;
-import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
+import com.example.hopeart.Adaptar.ArtistCustomizeOrderAdaptar;
+import com.example.hopeart.Adaptar.CustCustomizeOrderAdapter;
+import com.example.hopeart.DataModel.ArtistCustomizeOrderModel;
 import com.example.hopeart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,18 +29,16 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtistArtworkOrderFragment extends Fragment{
+public class CustCustomizeOrderFrag extends Fragment {
     Context ctx;
     FirebaseFirestore DB;
-    List<ArtistArtworkOrderModel> artworklist=null;
-    ArtistArtworkOrderAdaptar artworkadapter=null;
+    TextView txtSelectOrderStatus;
+    List<ArtistCustomizeOrderModel> cuorderlist=null;
+    CustCustomizeOrderAdapter cuartworkadapter=null;
 
-    TextView txtArtworkSelectOrderStatus;
+    String strSelectOrderStatus;
 
-    String strArtworkSelectOrderStatus;
-
-    String[] ArtworkSelectOrderStatus = {"Approved", "Pending","Cancel"};
-
+    String[] SelectOrderStatus = {"Approved", "Pending","Cancel"};
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -52,52 +51,50 @@ public class ArtistArtworkOrderFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         boolean attachToRoot;
-        return inflater.inflate(R.layout.artist_fragment_artworkorder,container,attachToRoot=false);
+        return inflater.inflate(R.layout.cust_fragment_customizeorder,container,attachToRoot=false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        RecyclerView rvcustomOrder=view.findViewById(R.id.customRecycleviewer);
 
-        RecyclerView rvartworkOrder=view.findViewById(R.id.artworkRecycleviewer);
+        txtSelectOrderStatus=view.findViewById(R.id.txtSelectOrderStatus);
 
-        txtArtworkSelectOrderStatus=view.findViewById(R.id.txtArtworkSelectOrderStatus);
-
-        txtArtworkSelectOrderStatus.setOnClickListener(new View.OnClickListener() {
+        txtSelectOrderStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                builder.setTitle("Select Artwork Order Status")
+                builder.setTitle("Select Order Status")
                         .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
                             }
                         })
-                        .setSingleChoiceItems(ArtworkSelectOrderStatus, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(SelectOrderStatus, -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int position) {
-                                txtArtworkSelectOrderStatus.setText(ArtworkSelectOrderStatus[position]);
-                                strArtworkSelectOrderStatus = (ArtworkSelectOrderStatus[position]);
+                                txtSelectOrderStatus.setText(SelectOrderStatus[position]);
+                                strSelectOrderStatus= (SelectOrderStatus[position]);
 
-                                artworklist.clear();
-
-                                DB.collection("ArtworkOrderData")
-                                        .whereEqualTo("artworkOrderStatus", strArtworkSelectOrderStatus)
+                                cuorderlist.clear();
+                                DB.collection("CustomOrderData")
+                                        .whereEqualTo("customOrderStatus",strSelectOrderStatus)
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                artworklist = new ArrayList<>();
-                                                if (task.isSuccessful()) {
-                                                    for (DocumentSnapshot doc : task.getResult()) {
-                                                        ArtistArtworkOrderModel artworkModel = doc.toObject(ArtistArtworkOrderModel.class);
-                                                        artworkModel.setOrderId(doc.getId());
-                                                        artworklist.add(artworkModel);
+                                                cuorderlist=new ArrayList<>();
+                                                if (task.isSuccessful()){
+                                                    for (DocumentSnapshot doc : task.getResult()){
+                                                        ArtistCustomizeOrderModel orderModel=doc.toObject(ArtistCustomizeOrderModel.class);
+                                                        orderModel.setCustomid(doc.getId());
+                                                        cuorderlist.add(orderModel);
                                                     }
-                                                    artworkadapter.setArtworklist(artworklist);
+                                                    cuartworkadapter.setCustomlist(cuorderlist);
                                                 }
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
@@ -106,6 +103,8 @@ public class ArtistArtworkOrderFragment extends Fragment{
 
                                     }
                                 });
+
+
                                 dialogInterface.dismiss();
                             }
                         })
@@ -114,33 +113,29 @@ public class ArtistArtworkOrderFragment extends Fragment{
                 builder.create().show();
             }
         });
-        DB.collection("ArtworkOrderData")
+
+        DB.collection("CustomOrderData")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        artworklist=new ArrayList<>();
+                        cuorderlist=new ArrayList<>();
                         if (task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult()){
-                                ArtistArtworkOrderModel artworkModel=doc.toObject(ArtistArtworkOrderModel.class);
-                                artworkModel.setOrderId(doc.getId());
-                                artworklist.add(artworkModel);
+                                ArtistCustomizeOrderModel orderModel=doc.toObject(ArtistCustomizeOrderModel.class);
+                                orderModel.setCustomid(doc.getId());
+                                cuorderlist.add(orderModel);
                             }
-                            List<ArtistArtworkOrderModel> artworklist=new ArrayList<>();
-
-                            artworkadapter=new ArtistArtworkOrderAdaptar(artworklist,ctx);
-                            rvartworkOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
-                            rvartworkOrder.setAdapter(artworkadapter);
+                            cuartworkadapter=new CustCustomizeOrderAdapter(cuorderlist,ctx);
+                            rvcustomOrder.setLayoutManager(new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL,false));
+                            rvcustomOrder.setAdapter(cuartworkadapter);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
             }
         });
     }
 }
-
-
-
-

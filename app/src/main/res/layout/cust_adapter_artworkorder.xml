@@ -12,7 +12,7 @@
         android:src="@drawable/splash_activity_image" />
 
     <TextView
-        android:id="@+id/txtPaymentMode"
+        android:id="@+id/txtartworkType"
         android:layout_width="115dp"
         android:layout_height="26dp"
         android:layout_alignParentStart="true"
@@ -21,48 +21,45 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="53dp"
         android:layout_marginRight="150dp"
-        android:text="Payment Mode"
-        android:textColor="#040303" />
-
+        android:text="Artwork Type" />
 
     <TextView
-        android:id="@+id/txtPaymentAmt"
-        android:layout_width="126dp"
-        android:layout_height="wrap_content"
-        android:textColor="#040303"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="41dp"
-        android:text="Amount" />
-
-    <TextView
-        android:id="@+id/txtPaymentStatus"
+        android:id="@+id/txtartworkFrameSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#040303"
+        android:layout_alignBottom="@+id/txtartworkType"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="150dp"
         android:layout_marginBottom="-48dp"
         android:text="Artwork Frame Size" />
 
     <TextView
-        android:id="@+id/txtPaymentDate"
+        android:id="@+id/txtartworkPrice"
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="41dp"
-        android:text="Payment Date"
-        android:textColor="#040303" />
+        android:text="Artwork Price" />
+
+    <Button
+        android:id="@+id/btnartistdetail"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="43dp"
+        android:text="Details" />
+
 
 </RelativeLayout>

@@ -67,7 +67,7 @@ public class CustHomeFragment extends Fragment {
                                 artworklist.add(artworkModel);
                             }
                             CustHomeAdaptar custhomeAdaptar=new CustHomeAdaptar(artworklist,ctx);
-                            rvcustHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,true));
+                            rvcustHomeOrder.setLayoutManager(new GridLayoutManager(ctx,2,GridLayoutManager.VERTICAL,false));
                             rvcustHomeOrder.setAdapter(custhomeAdaptar);
                         }
                     }
