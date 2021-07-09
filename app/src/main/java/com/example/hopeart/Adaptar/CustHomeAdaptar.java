@@ -71,7 +71,7 @@ public class CustHomeAdaptar extends RecyclerView.Adapter<CustHomeAdaptar.ItemVi
 
             this.txtcustHomePrice = itemView.findViewById(R.id.txtcustHomePrice);
             this.imgcustHomeImage = itemView.findViewById(R.id.imgcustHomeImage);
-            this.imgcustHomeMenu=itemView.findViewById(R.id.imgcustHomeMenu);
+            //this.imgcustHomeMenu=itemView.findViewById(R.id.imgcustHomeMenu);
         }
 
     }

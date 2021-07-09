@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hopeart.Fragments.ArtistAddArtworkFragment;
 import com.example.hopeart.R;
 import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityLogIn extends AppCompatActivity {
+
     EditText edtLoginEmail,edtLoginPass;
     FloatingActionButton btnLogin;
     FirebaseAuth mAuth;
@@ -30,7 +30,6 @@ public class ActivityLogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         mAuth= FirebaseAuth.getInstance();
 
@@ -62,7 +61,6 @@ public class ActivityLogIn extends AppCompatActivity {
             public void onClick(View view) {
                 loginUser(edtLoginEmail.getText().toString(),edtLoginPass.getText().toString());
             }
-
             private void loginUser(String email,String pass) {
                 mAuth.signInWithEmailAndPassword(email,pass)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -85,15 +83,12 @@ public class ActivityLogIn extends AppCompatActivity {
 
                                 }else{
                                     Toast.makeText(ActivityLogIn.this, "Login Error", Toast.LENGTH_SHORT).show();
-
                                 }
-
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(ActivityLogIn.this, "Login Fail", Toast.LENGTH_SHORT).show();
-
                     }
                 });
             }

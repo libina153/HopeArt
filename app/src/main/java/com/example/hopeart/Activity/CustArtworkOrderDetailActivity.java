@@ -113,7 +113,7 @@ public class CustArtworkOrderDetailActivity extends AppCompatActivity {
                 upData.put("artworkOrderStatus","Cancel");
 
                 firebaseDB.collection("ArtworkOrderData")
-                        .document(artistArtworkOrderModel.getOrderId())
+                        .document(artistArtworkOrderModel.getArtistId())
                         .update(upData)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

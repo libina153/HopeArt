@@ -24,12 +24,6 @@
             android:textSize="15dp"
             android:text="Rs" />
 
-        <ImageView
-            android:id="@+id/imgHomeMenu"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="120dp"
-            android:src="@drawable/ic_menu" />
 
 
     </LinearLayout>

@@ -23,12 +23,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
+import com.example.hopeart.DataModel.UserProfileModel;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -51,6 +54,7 @@ public class ArtistAddArtworkFragment extends Fragment {
     String[] ArtworkFrameSize = {"4*6", "5*7", "6*8", "5*8", "8*8"};
     String[] ArtworkPaperType = {"Matt Coated", "Silk Coated", "Watermarked", "Kraft Paper"};
 
+    Boolean artistApproval;
     private Uri filePath;
 
     int PICK_IMAGE_REQUEST = 10;
@@ -92,6 +96,18 @@ public class ArtistAddArtworkFragment extends Fragment {
 
         imgShow = view.findViewById(R.id.artwork_img);
         btnSave = view.findViewById(R.id.btnSave);
+
+        String id= SharedPreferenceManger.getUserId(ctx);
+        firebaseDB.collection("UsersProfile")
+                .document(id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        UserProfileModel artist=documentSnapshot.toObject(UserProfileModel.class);
+                        artistApproval=artist.getApproved();
+                    }
+                });
 
 
         txtArtworkType.setOnClickListener(new View.OnClickListener() {
@@ -172,13 +188,14 @@ public class ArtistAddArtworkFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (artistApproval) {
                 Float artWorkPrice = Float.parseFloat(edtArtworkPrice.getText().toString());
 
-                ArtistArtWorkModel st=new ArtistArtWorkModel(
-                        strArtworkType,strArtWorkFrameSize,
-                        strArtWorkPaperType,artWorkPrice,strArtWorkImage);
+                ArtistArtWorkModel st = new ArtistArtWorkModel(
+                        strArtworkType, strArtWorkFrameSize,
+                        strArtWorkPaperType, artWorkPrice, strArtWorkImage);
 
-                Map<String,Object> data=st.toMap();
+                Map<String, Object> data = st.toMap();
 
                 firebaseDB.collection("ArtWorkData")
                         .add(data)
@@ -186,7 +203,7 @@ public class ArtistAddArtworkFragment extends Fragment {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(ctx, "Data Added", Toast.LENGTH_SHORT).show();
-                                String insertedId=documentReference.getId();
+                                String insertedId = documentReference.getId();
                                 uploadImage(insertedId);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -195,6 +212,9 @@ public class ArtistAddArtworkFragment extends Fragment {
                         Toast.makeText(ctx, "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
+                }else {
+                    Toast.makeText(ctx,"You Are Not Approved By Admin",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

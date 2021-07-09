@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +43,6 @@ public class ActivityRegistration extends AppCompatActivity{
         btnReg= findViewById(R.id.btnReg);
         user=(RadioGroup)findViewById(R.id.rgUser);
 
-
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,8 +58,6 @@ public class ActivityRegistration extends AppCompatActivity{
             }
         });
     }
-
-
         private void registerUser(String email,String pass)
         {
             mAuth.createUserWithEmailAndPassword(email,pass)
@@ -70,7 +66,6 @@ public class ActivityRegistration extends AppCompatActivity{
                         public void onComplete(@NonNull Task<AuthResult> task) {
                          if(task.isSuccessful())
                          {
-
                              SharedPreferenceManger.setIsRegistered(ActivityRegistration.this,true);
                              SharedPreferenceManger.setUserType(ActivityRegistration.this,getCheckUserType());
 
@@ -88,12 +83,9 @@ public class ActivityRegistration extends AppCompatActivity{
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(ActivityRegistration.this, "Failed to register", Toast.LENGTH_SHORT).show();
-
                 }
             });
         }
-
-
         private String getCheckUserType(){
             int checkId=user.getCheckedRadioButtonId();
             if (checkId==R.id.radiobtn_artist){
@@ -102,5 +94,4 @@ public class ActivityRegistration extends AppCompatActivity{
                 return "C";
             }
         }
-
 }

@@ -19,7 +19,7 @@
                 android:layout_height="202dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_addphoto" />
+                android:src="@drawable/addimg_icon" />
 
 
             <TextView

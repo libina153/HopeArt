@@ -52,7 +52,7 @@ public class CustHomeDrawer extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.cust_homemenu, R.id.cust_artworkordermenu,R.id.cust_customordermenu, R.id.cust_profilemenu,R.id.cust_bookyourordermenu,R.id.cust_wishlistmenu)
+                R.id.cust_homemenu, R.id.cust_artworkordermenu,R.id.cust_customordermenu,R.id.cust_bookyourordermenu, R.id.cust_profilemenu,R.id.cust_wishlistmenu)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

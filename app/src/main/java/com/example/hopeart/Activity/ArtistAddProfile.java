@@ -1,15 +1,17 @@
 package com.example.hopeart.Activity;
 
 import android.Manifest;
-import android.app.ProgressDialog;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
+import android.widget.ImageView;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import com.example.hopeart.DataModel.ArtistArtWorkModel;
 import com.example.hopeart.DataModel.UserProfileModel;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -50,13 +53,19 @@ public class ArtistAddProfile extends AppCompatActivity {
     String userProfileImg;
 
     EditText edtArtistName,edtArtistMobno,edtArtistAddress,edtArtistAadhaar,edtArtistEmail;
-    Button pUploadAadhar,pUploadHandicapCerti;
+    ImageView imgUploadAadhar,imgUploadHandicapCerti;
 
     FloatingActionButton btn_moveto_artisthome;
     com.mikhaellopez.circularimageview.CircularImageView imgArtistProfile;
 
     int PICK_IMAGE_REQUEST=10;
+
+    int PICK_IMAGE_CERTIFICATE=60;
+    int PICK_IMAGE_AADHAR=85;
+
     private Uri filePath;
+    private Uri filePathAadhar;
+    private Uri filePathCerfificate;
 
     StorageReference rootReference;
     FirebaseFirestore firebaseDB;
@@ -71,8 +80,9 @@ public class ArtistAddProfile extends AppCompatActivity {
         edtArtistEmail=findViewById(R.id.edtArtistEmail);
         edtArtistAddress=findViewById(R.id.edtArtistAddress);
         edtArtistAadhaar=findViewById(R.id.edtArtistAadharNo);
-        pUploadAadhar=findViewById(R.id.pUploadAadhar);
-        pUploadHandicapCerti=findViewById(R.id.pUploadHandicapCerti);
+
+        imgUploadAadhar=findViewById(R.id.imgUploadAadhar);
+        imgUploadHandicapCerti=findViewById(R.id.imgUploadHandicapCerti);
 
         imgArtistProfile=findViewById(R.id.imgArtistProfile);
 
@@ -109,7 +119,17 @@ public class ArtistAddProfile extends AppCompatActivity {
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(ArtistAddProfile.this, "Data Added", Toast.LENGTH_SHORT).show();
                                 String insertedId=documentReference.getId();
+                                SharedPreferenceManger.setUserId(ArtistAddProfile.this,insertedId);
+                                SharedPreferenceManger.setUserName(ArtistAddProfile.this,userName);
+                                SharedPreferenceManger.setMobileNo(ArtistAddProfile.this,userMobileNo);
+                                SharedPreferenceManger.setEmail(ArtistAddProfile.this,userEmail);
+                                SharedPreferenceManger.setAadharNo(ArtistAddProfile.this,userAadhar);
+                                SharedPreferenceManger.setAddress(ArtistAddProfile.this,userAddress);
+                                SharedPreferenceManger.setAadharPic(ArtistAddProfile.this,userAadharImg);
+                                SharedPreferenceManger.setHandiCertiPic(ArtistAddProfile.this,userHandicapCerti);
                                 uploadImage(insertedId);
+                                uploadAadhaarImage(insertedId);
+                                uploadHandiCertiImage(insertedId);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -118,6 +138,9 @@ public class ArtistAddProfile extends AppCompatActivity {
                     }
                 });
 
+                Intent homeIntent=new Intent(ArtistAddProfile.this, ArtistHomeBottomNav.class);
+                startActivity(homeIntent);
+                finish();
             }
         });
 
@@ -127,22 +150,55 @@ public class ArtistAddProfile extends AppCompatActivity {
                 selectImage();
             }
         });
+        imgUploadAadhar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectAadharImage();
+            }
+        });
+        imgUploadHandicapCerti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectCertificateImage ();
+            }
+        });
     }
 
     private void selectImage (){
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivityForResult(
                 Intent.createChooser(
                         intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
     }
+
+    private void selectAadharImage (){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent, "Select Image from here..."), PICK_IMAGE_AADHAR);
+    }
+
+    private void selectCertificateImage (){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent, "Select Image from here..."), PICK_IMAGE_CERTIFICATE);
+    }
+
     private void uploadImage (String insId)
     {
+/*
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+*/
 
         StorageReference fileRef = rootReference.child(UUID.randomUUID().toString() + ".jpg");
 
@@ -150,13 +206,13 @@ public class ArtistAddProfile extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         Toast.makeText(ArtistAddProfile.this, "Upload Success..", Toast.LENGTH_LONG).show();
                         fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
                                 String url=uri.toString();
-
+                                SharedPreferenceManger.setProfilePic(ArtistAddProfile.this,url);
                                 Map<String,Object> upData=new HashMap<>();
                                 upData.put("userProfileImg",url);
 
@@ -181,7 +237,7 @@ public class ArtistAddProfile extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
 
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
                 Toast.makeText(ArtistAddProfile.this, "Upload Fail..", Toast.LENGTH_LONG).show();
                 Toast.makeText(ArtistAddProfile.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -189,10 +245,116 @@ public class ArtistAddProfile extends AppCompatActivity {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                progressDialog.setMessage("Uploaded" + (int) progress + "%");
+                //progressDialog.setMessage("Uploaded" + (int) progress + "%");
             }
         });
     }
+
+
+    private void uploadAadhaarImage (String insId)
+    {
+        StorageReference fileRef = rootReference.child(UUID.randomUUID().toString() + ".jpg");
+
+        fileRef.putFile(filePathAadhar)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // progressDialog.dismiss();
+                        Toast.makeText(ArtistAddProfile.this, "Aadhaar image uploaded", Toast.LENGTH_LONG).show();
+                        fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String url=uri.toString();
+                                SharedPreferenceManger.setAadharPic(ArtistAddProfile.this,url);
+                                Map<String,Object> upData=new HashMap<>();
+                                upData.put("userAadharImg",url);
+
+                                firebaseDB.collection("UsersProfile")
+                                        .document(insId)
+                                        .update(upData)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(ArtistAddProfile.this, "Data Updated ", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(ArtistAddProfile.this, "Data Failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                //progressDialog.dismiss();
+                Toast.makeText(ArtistAddProfile.this, "Upload Fail..", Toast.LENGTH_LONG).show();
+                Toast.makeText(ArtistAddProfile.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                //progressDialog.setMessage("Uploaded" + (int) progress + "%");
+            }
+        });
+    }
+
+    private void uploadHandiCertiImage (String insId)
+    {
+        StorageReference fileRef = rootReference.child(UUID.randomUUID().toString() + ".jpg");
+
+        fileRef.putFile(filePathCerfificate)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // progressDialog.dismiss();
+                        Toast.makeText(ArtistAddProfile.this, "Handicap Certificate uploaded", Toast.LENGTH_LONG).show();
+                        fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String url=uri.toString();
+                                SharedPreferenceManger.setHandiCertiPic(ArtistAddProfile.this,url);
+                                Map<String,Object> upData=new HashMap<>();
+                                upData.put("userHandicapCerti",url);
+
+                                firebaseDB.collection("UsersProfile")
+                                        .document(insId)
+                                        .update(upData)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(ArtistAddProfile.this, "Data Updated ", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(ArtistAddProfile.this, "Data Failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                //progressDialog.dismiss();
+                Toast.makeText(ArtistAddProfile.this, "Upload Fail..", Toast.LENGTH_LONG).show();
+                Toast.makeText(ArtistAddProfile.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                //progressDialog.setMessage("Uploaded" + (int) progress + "%");
+            }
+        });
+    }
+
 
     @Override
     public void onActivityResult ( int requestCode, int resultCode,
@@ -216,7 +378,46 @@ public class ArtistAddProfile extends AppCompatActivity {
                 //Log the exception
                 e.printStackTrace();
             }
+        }
 
+        if (requestCode == PICK_IMAGE_AADHAR
+                && resultCode == RESULT_OK
+                && data != null
+                && data.getData() != null) {
+            //Get the uri of data
+            filePathAadhar = data.getData();
+            try {
+                //Setting image on image view using Bitmap
+                Bitmap bitmap = MediaStore
+                        .Images
+                        .Media
+                        .getBitmap(ArtistAddProfile.this.getContentResolver(),
+                                filePathAadhar);
+                imgUploadAadhar.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                //Log the exception
+                e.printStackTrace();
+            }
+        }
+
+        if (requestCode == PICK_IMAGE_CERTIFICATE
+                && resultCode == RESULT_OK
+                && data != null
+                && data.getData() != null) {
+            //Get the uri of data
+            filePathCerfificate = data.getData();
+            try {
+                //Setting image on image view using Bitmap
+                Bitmap bitmap = MediaStore
+                        .Images
+                        .Media
+                        .getBitmap(ArtistAddProfile.this.getContentResolver(),
+                                filePathCerfificate);
+                imgUploadHandicapCerti.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                //Log the exception
+                e.printStackTrace();
+            }
         }
     }
     }

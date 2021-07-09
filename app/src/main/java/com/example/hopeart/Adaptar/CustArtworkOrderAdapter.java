@@ -56,7 +56,6 @@ public class CustArtworkOrderAdapter extends RecyclerView.Adapter<CustArtworkOrd
                 Intent artdetail=new Intent(ctx, CustArtworkOrderDetailActivity.class);
                 artdetail.putExtra("custArtworkOrderModel",custorder);
                 ctx.startActivity(artdetail);
-
             }
         });
         Glide.with(ctx)

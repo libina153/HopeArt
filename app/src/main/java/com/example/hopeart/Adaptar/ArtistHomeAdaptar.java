@@ -80,7 +80,7 @@ public class ArtistHomeAdaptar extends RecyclerView.Adapter<ArtistHomeAdaptar.It
 
             this.txtHomePrice = itemView.findViewById(R.id.txtHomePrice);
             this.imgHomeImage = itemView.findViewById(R.id.imgHomeImage);
-            this.imgHomeMenu=itemView.findViewById(R.id.imgHomeMenu);
+           // this.imgHomeMenu=itemView.findViewById(R.id.imgHomeMenu);
 
 
         }

@@ -12,5 +12,9 @@ public class SharedPreferencesKeyConstants
     public static final String USER_ID="user_id";
     public static final String MOBILE_NO="mobile_no";
     public static final String USER_TYPE="user_type";
-    public static final String IsProfile="IsProfile";
+    public static final String IS_PROFILE="isProfile";
+    public static final String PROFILE_PIC="profilePic";
+    public static final String AADHAAR_PIC="aadharPic";
+    public static final String HANDICERTI_PIC="handiCertiPic";
+
 }

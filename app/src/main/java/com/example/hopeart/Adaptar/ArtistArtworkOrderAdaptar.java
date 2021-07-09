@@ -8,16 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.hopeart.Activity.ArtistArtworkDetailActivity;
-import com.example.hopeart.Activity.ArtistCustomDetailActivity;
+
 import com.example.hopeart.DataModel.ArtistArtworkOrderModel;
-import com.example.hopeart.Fragments.ArtistArtworkOrderFragment;
+
 import com.example.hopeart.R;
 
 import java.util.List;
@@ -63,7 +62,6 @@ public class ArtistArtworkOrderAdaptar extends RecyclerView.Adapter<ArtistArtwor
         Glide.with(ctx)
                 .load(artworkorder.getArtworkimg())
                 .into(holder.imgArtworkImage);
-
     }
 
     @Override

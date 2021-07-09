@@ -114,12 +114,42 @@ public class SharedPreferenceManger
     }
 
     //IsProfile
-    public static boolean setIsProfile(Context context,boolean isProfile)
+    public static boolean setIsProfile(Context context, String isProfile)
     {
-        return MyApplication.getInstance().getSharedPreferences(context).edit().putBoolean(SharedPreferencesKeyConstants.IsProfile,isProfile).commit();
+        return MyApplication.getInstance().getSharedPreferences(context).edit().putBoolean(SharedPreferencesKeyConstants.IS_PROFILE, Boolean.parseBoolean(isProfile)).commit();
     }
     public static boolean getIsProfile(Context context)
     {
-        return MyApplication.getInstance().getSharedPreferences(context).getBoolean(SharedPreferencesKeyConstants.IsProfile,false);
+        return MyApplication.getInstance().getSharedPreferences(context).getBoolean(SharedPreferencesKeyConstants.IS_PROFILE,false);
+    }
+
+    //ProfilePic
+    public static boolean setProfilePic(Context context,String profilePic)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).edit().putString(SharedPreferencesKeyConstants.PROFILE_PIC,profilePic).commit();
+    }
+    public static String getProfilePic(Context context)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).getString(SharedPreferencesKeyConstants.PROFILE_PIC,"");
+    }
+
+    //AadharPic
+    public static boolean setAadharPic(Context context,String aadharPic)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).edit().putString(SharedPreferencesKeyConstants.AADHAAR_PIC,aadharPic).commit();
+    }
+    public static String getAadharPic(Context context)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).getString(SharedPreferencesKeyConstants.AADHAAR_PIC,"");
+    }
+
+    //HandiCertiPic
+    public static boolean setHandiCertiPic(Context context,String handiCertiPic)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).edit().putString(SharedPreferencesKeyConstants.HANDICERTI_PIC,handiCertiPic).commit();
+    }
+    public static String getHandiCertiPic(Context context)
+    {
+        return MyApplication.getInstance().getSharedPreferences(context).getString(SharedPreferencesKeyConstants.HANDICERTI_PIC,"");
     }
 }

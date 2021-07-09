@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
  <TextView
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:layout_marginTop="10dp"
+     android:layout_marginTop="110dp"
      android:text="Forgot Your Password ?"
      android:gravity="center"
      android:textSize="20dp"/>
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:text="To reset password, enter your email press the button and check mail to follow instruction."
         android:textSize="20dp"/>
 

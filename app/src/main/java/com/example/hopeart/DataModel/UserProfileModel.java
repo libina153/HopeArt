@@ -15,8 +15,17 @@ public class UserProfileModel {
     String userHandicapCerti;
     String userAadharImg;
     String userProfileImg;
+    Boolean Approved;
 
     public UserProfileModel() {
+    }
+
+    public Boolean getApproved() {
+        return Approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        Approved = approved;
     }
 
     public String getUserId() {
@@ -125,6 +134,7 @@ public class UserProfileModel {
         mapobj1.put("userHandicapCerti", this.userHandicapCerti);
         mapobj1.put("userAadharImg", this.userAadharImg);
         mapobj1.put("userProfileImg", this.userProfileImg);
+        mapobj1.put("Approved", false);
 
         return mapobj1;
     }

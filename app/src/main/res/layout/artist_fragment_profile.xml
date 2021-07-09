@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
         <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgProfilePic"
         android:layout_width="250dp"
         android:layout_height="222dp"
         android:layout_gravity="center"
@@ -27,7 +28,7 @@
 
     <TextView
         android:layout_marginTop="30dp"
-        android:id="@+id/artist_fragname"
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/txt_shapes"
@@ -39,7 +40,7 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/artist_fragmobno"
+        android:id="@+id/txtMobno"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:drawablePadding="10dp"
@@ -53,7 +54,7 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/artist_fragemail"
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:drawablePadding="10dp"
@@ -67,7 +68,7 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/artist_fragaadharno"
+        android:id="@+id/txtAadhaarno"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -80,7 +81,7 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/artist_fragprofile"
+        android:id="@+id/txtAddress"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
@@ -92,13 +93,14 @@
         android:text="Address"
         android:textSize="20sp"/>
     <Button
+        android:id="@+id/btnEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:padding="5dp"
-        android:text="Save"
+        android:text="Edit"
         android:textSize="25dp" />
         </LinearLayout>
     </ScrollView>

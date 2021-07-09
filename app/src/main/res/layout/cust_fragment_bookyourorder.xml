@@ -45,7 +45,7 @@
             android:layout_height="300dp"
             android:id="@+id/imgcustBookOrder"
             android:layout_gravity="center"
-            android:src="@drawable/splash_activity_image"/>
+            android:src="@drawable/addimg_icon"/>
 
         <TextView
             android:layout_width="match_parent"

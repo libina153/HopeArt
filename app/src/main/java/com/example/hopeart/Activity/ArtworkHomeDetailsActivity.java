@@ -79,6 +79,5 @@ public class ArtworkHomeDetailsActivity extends AppCompatActivity {
                 Toast.makeText(ArtworkHomeDetailsActivity.this, "Added To Wish List", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

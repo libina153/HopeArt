@@ -21,15 +21,13 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="53dp"
         android:layout_marginRight="150dp"
-        android:text="Payment Mode"
-        android:textColor="#040303" />
+        android:text="Payment Mode" />
 
 
     <TextView
         android:id="@+id/txtPaymentAmt"
         android:layout_width="126dp"
         android:layout_height="wrap_content"
-        android:textColor="#040303"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -42,7 +40,6 @@
         android:id="@+id/txtPaymentStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#040303"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="200dp"
@@ -62,7 +59,6 @@
         android:layout_marginStart="200dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="41dp"
-        android:text="Payment Date"
-        android:textColor="#040303" />
+        android:text="Payment Date"/>
 
 </RelativeLayout>

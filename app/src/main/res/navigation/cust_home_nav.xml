@@ -10,11 +10,7 @@
         android:label="Home"
         tools:layout="@layout/cust_fragment_home"
         android:name="com.example.hopeart.Fragments.CustHomeFragment"/>
-    <fragment
-        android:id="@+id/cust_profilemenu"
-        android:label="Profile"
-        tools:layout="@layout/cust_fragment_artworkorder"
-        android:name="com.example.hopeart.Fragments.CustProfileFragment"/>
+
     <fragment
         android:id="@+id/cust_wishlistmenu"
         android:label="WishList"
@@ -35,6 +31,12 @@
         android:label="order"
         tools:layout="@layout/cust_fragment_customizeorder"
         android:name="com.example.hopeart.Fragments.CustCustomizeOrderFrag"/>
+    <fragment
+        android:id="@+id/cust_profilemenu"
+        android:label="Profile"
+        tools:layout="@layout/cust_fragment_artworkorder"
+        android:name="com.example.hopeart.Fragments.CustProfileFragment"/>
+
     <fragment
         android:id="@+id/cust_cardmenu"
         android:label="Cart"

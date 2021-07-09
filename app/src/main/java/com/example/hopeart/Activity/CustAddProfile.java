@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.hopeart.DataModel.UserProfileModel;
 import com.example.hopeart.R;
+import com.example.hopeart.Utility.SharedPreferenceManger;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -100,6 +101,11 @@ public class CustAddProfile extends AppCompatActivity {
                            public void onSuccess(DocumentReference documentReference) {
                                Toast.makeText(CustAddProfile.this, "Data Added", Toast.LENGTH_SHORT).show();
                                String insertedId=documentReference.getId();
+                               SharedPreferenceManger.setUserName(CustAddProfile.this,userName);
+                               SharedPreferenceManger.setMobileNo(CustAddProfile.this,userMobileNo);
+                               SharedPreferenceManger.setEmail(CustAddProfile.this,userEmail);
+                               SharedPreferenceManger.setAadharNo(CustAddProfile.this,userAadhar);
+                               SharedPreferenceManger.setAddress(CustAddProfile.this,userAddress);
                                uploadImage(insertedId);
                            }
                        }).addOnFailureListener(new OnFailureListener() {
@@ -108,6 +114,9 @@ public class CustAddProfile extends AppCompatActivity {
                        Toast.makeText(CustAddProfile.this, "Fail", Toast.LENGTH_SHORT).show();
                    }
                });
+               Intent homeIntent=new Intent(CustAddProfile.this, CustHomeDrawer.class);
+               startActivity(homeIntent);
+               finish();
 
            }
        });
@@ -129,10 +138,10 @@ public class CustAddProfile extends AppCompatActivity {
     }
     private void uploadImage (String insId)
     {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        /*final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.setCancelable(false);
-        progressDialog.show();
+        progressDialog.show();*/
 
         StorageReference fileRef = rootReference.child(UUID.randomUUID().toString() + ".jpg");
 
@@ -140,13 +149,13 @@ public class CustAddProfile extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                         Toast.makeText(CustAddProfile.this, "Upload Success..", Toast.LENGTH_LONG).show();
                         fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
                                 String url=uri.toString();
-
+                                SharedPreferenceManger.setProfilePic(CustAddProfile.this,url);
                                 Map<String,Object> upData=new HashMap<>();
                                 upData.put("userProfileImg",url);
 
@@ -171,7 +180,7 @@ public class CustAddProfile extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
 
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
                 Toast.makeText(CustAddProfile.this, "Upload Fail..", Toast.LENGTH_LONG).show();
                 Toast.makeText(CustAddProfile.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -179,7 +188,7 @@ public class CustAddProfile extends AppCompatActivity {
             @Override
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                progressDialog.setMessage("Uploaded" + (int) progress + "%");
+                //progressDialog.setMessage("Uploaded" + (int) progress + "%");
             }
         });
     }

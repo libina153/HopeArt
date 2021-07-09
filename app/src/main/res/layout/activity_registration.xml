@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B38FF4"
+    android:background="#E1DEDE"
     android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="HopeArt"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/edtRegEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:gravity="center"
+        android:layout_marginTop="60dp"
         android:hint="Email"
-        android:textColor="#040303"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edtRegPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:hint="Password"
-        android:textColor="#040303"
+        android:textColor="@color/black"
         android:inputType="textPassword"
         android:textSize="20sp" />
 
@@ -29,9 +38,8 @@
         android:id="@+id/edtRegConfirmPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:hint="Confirm Password"
-        android:textColor="#040303"
+        android:textColor="@color/black"
         android:inputType="textPassword"
         android:textSize="20sp" />
 
@@ -40,7 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="#040303"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <RadioButton
@@ -67,12 +76,12 @@
         android:src="@drawable/ic_done_icon" />
 
     <TextView
+        android:id="@+id/txtLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:id="@+id/txtLogin"
         android:gravity="center"
-        android:textColor="#040303"
+        android:textColor="@color/black"
         android:text="Already have an account ? LogIn "
         android:textSize="18sp" />
 

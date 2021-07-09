@@ -77,7 +77,6 @@ public class CustPlaceOrderActivity extends AppCompatActivity {
                 artworkFrameSize=artModel.getStrArtWorkFrameSize();
                 artworkPaperType=artModel.getStrArtWorkPaperType();
                 artworkPrice=artModel.getArtWorkPrice();
-                artworkimg=artModel.getStrArtWorkImage();
 
                 ArtistArtworkOrderModel st=new
                         ArtistArtworkOrderModel(artistId,artworktype,

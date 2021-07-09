@@ -7,12 +7,14 @@
 
 
     <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imgProfilePic"
         android:layout_width="200dp"
         android:layout_height="160dp"
         android:layout_gravity="center"
         android:src="@drawable/splash_activity_image" />
 
     <TextView
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_cust_name"
@@ -22,6 +24,7 @@
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -31,6 +34,7 @@
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/txtMobno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_cust_mobile"
@@ -40,6 +44,7 @@
         android:text="Mobile No."/>
 
     <TextView
+        android:id="@+id/txtAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_cust_address"
@@ -49,11 +54,11 @@
         android:text="Address"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textSize="25sp"
-        android:text="Update"/>
+        android:text="Edit"/>
 
 </LinearLayout>

@@ -20,11 +20,14 @@
         android:label="Order"
         tools:layout="@layout/artist_fragment_order"
         android:name="com.example.hopeart.Fragments.ArtistOrderFragment"/>
+
     <fragment
         android:id="@+id/artist_profilemenu"
         android:label="Profile"
         tools:layout="@layout/artist_fragment_profile"
         android:name="com.example.hopeart.Fragments.ArtistProfileFragment"/>
+
+
     <fragment
         android:id="@+id/artist_paymentmenu"
         android:label="Payment"

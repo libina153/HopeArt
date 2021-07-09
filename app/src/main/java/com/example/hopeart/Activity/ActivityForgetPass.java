@@ -47,7 +47,6 @@ public class ActivityForgetPass  extends AppCompatActivity {
                                         Toast.makeText(ActivityForgetPass.this, "Password Reset Link Sent", Toast.LENGTH_SHORT).show();
                                     }else {
                                         Toast.makeText(ActivityForgetPass.this, "Password Reset Link Not Sent", Toast.LENGTH_SHORT).show();
-
                                     }
                                 }
                             });

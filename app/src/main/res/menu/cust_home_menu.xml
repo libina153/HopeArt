@@ -4,10 +4,7 @@
         android:id="@+id/cust_homemenu"
         android:title="Home"
         android:icon="@drawable/ic_home_icon"/>
-    <item
-        android:id="@+id/cust_profilemenu"
-        android:title="Profile"
-        android:icon="@drawable/ic_profile_icon"/>
+
 
     <item
         android:id="@+id/cust_artworkordermenu"
@@ -23,6 +20,11 @@
         android:id="@+id/cust_wishlistmenu"
         android:title="Wishlist"
         android:icon="@drawable/ic_profile_icon"/>
+    <item
+        android:id="@+id/cust_profilemenu"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile_icon"/>
+
     <item
         android:id="@+id/cust_bookyourordermenu"
         android:title="Book your order"
